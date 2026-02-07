@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chiến Lược Thích Ứng AI/Agent Era — Senior Fullstack Developer 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=JetBrains+Mono:wght@400;500;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #12121a;
+  --bg-card: #16162280;
+  --accent-1: #00e5a0;
+  --accent-2: #7b5cff;
+  --accent-3: #ff6b6b;
+  --accent-4: #ffd166;
+  --accent-5: #4ecdc4;
+  --text-primary: #f0f0f5;
+  --text-secondary: #8888aa;
+  --text-muted: #555577;
+  --border: #2a2a40;
+  --glow-1: rgba(0,229,160,0.15);
+  --glow-2: rgba(123,92,255,0.15);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* Noise overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--accent-2); border-radius: 3px; }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(123,92,255,0.2) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 20% 80%, rgba(0,229,160,0.1) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 40% at 80% 70%, rgba(255,107,107,0.08) 0%, transparent 50%);
+  animation: bgPulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes bgPulse {
+  0% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+.hero-grid {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: 
+    linear-gradient(rgba(123,92,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(123,92,255,0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 30%, transparent 70%);
+}
+
+.hero-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent-1);
+  border: 1px solid rgba(0,229,160,0.3);
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.hero h1 .gradient-text {
+  background: linear-gradient(135deg, var(--accent-1) 0%, var(--accent-2) 50%, var(--accent-3) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 1.2rem 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  min-width: 140px;
+}
+
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--accent-1);
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 0.3rem;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  animation: bounce 2s infinite;
+}
+
+.scroll-indicator span {
+  display: block;
+  width: 2px;
+  height: 30px;
+  background: linear-gradient(to bottom, var(--accent-2), transparent);
+  border-radius: 1px;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(10px); }
+}
+
+/* ===== NAV ===== */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10,10,15,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 1.5rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav::-webkit-scrollbar { display: none; }
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 0;
+}
+
+.nav a {
+  padding: 1rem 1.2rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.nav a:hover, .nav a.active {
+  color: var(--accent-1);
+  border-bottom-color: var(--accent-1);
+}
+
+/* ===== SECTIONS ===== */
+.section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+}
+
+.section-header {
+  margin-bottom: 3.5rem;
+}
+
+.section-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin-bottom: 0.8rem;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.section-desc {
+  color: var(--text-secondary);
+  max-width: 650px;
+  font-size: 1.05rem;
+}
+
+/* ===== REALITY CHECK ===== */
+.reality-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.reality-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.reality-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-2);
+}
+
+.reality-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: 20px 20px 0 0;
+}
+
+.reality-card:nth-child(1)::before { background: var(--accent-1); }
+.reality-card:nth-child(2)::before { background: var(--accent-2); }
+.reality-card:nth-child(3)::before { background: var(--accent-3); }
+.reality-card:nth-child(4)::before { background: var(--accent-4); }
+
+.reality-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.reality-card h3 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.reality-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.reality-highlight {
+  display: inline-block;
+  background: rgba(0,229,160,0.1);
+  color: var(--accent-1);
+  padding: 0.1em 0.5em;
+  border-radius: 4px;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+}
+
+/* ===== DIVIDER ===== */
+.divider {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===== MINDSET SHIFT ===== */
+.mindset-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.mindset-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .mindset-row {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+}
+
+.mindset-old, .mindset-new {
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+}
+
+.mindset-old {
+  background: rgba(255,107,107,0.05);
+  border-color: rgba(255,107,107,0.2);
+}
+
+.mindset-new {
+  background: rgba(0,229,160,0.05);
+  border-color: rgba(0,229,160,0.2);
+}
+
+.mindset-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 0.5rem;
+}
+
+.mindset-old .mindset-label { color: var(--accent-3); }
+.mindset-new .mindset-label { color: var(--accent-1); }
+
+.mindset-text {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.mindset-arrow {
+  font-size: 1.5rem;
+  color: var(--accent-2);
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .mindset-arrow { transform: rotate(90deg); text-align: center; }
+}
+
+/* ===== ROADMAP ===== */
+.roadmap {
+  position: relative;
+}
+
+.roadmap::before {
+  content: '';
+  position: absolute;
+  left: 28px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent-1), var(--accent-2), var(--accent-3), var(--accent-4));
+  border-radius: 1px;
+}
+
+@media (max-width: 768px) {
+  .roadmap::before { left: 18px; }
+}
+
+.phase {
+  position: relative;
+  padding-left: 70px;
+  margin-bottom: 3.5rem;
+}
+
+@media (max-width: 768px) {
+  .phase { padding-left: 50px; }
+}
+
+.phase-dot {
+  position: absolute;
+  left: 17px;
+  top: 0.5rem;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 3px solid;
+  background: var(--bg-primary);
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .phase-dot { left: 7px; width: 22px; height: 22px; }
+}
+
+.phase:nth-child(1) .phase-dot { border-color: var(--accent-1); box-shadow: 0 0 15px var(--glow-1); }
+.phase:nth-child(2) .phase-dot { border-color: var(--accent-2); box-shadow: 0 0 15px var(--glow-2); }
+.phase:nth-child(3) .phase-dot { border-color: var(--accent-4); box-shadow: 0 0 15px rgba(255,209,102,0.15); }
+.phase:nth-child(4) .phase-dot { border-color: var(--accent-3); box-shadow: 0 0 15px rgba(255,107,107,0.15); }
+
+.phase-time {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.phase-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.phase-desc {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  max-width: 700px;
+}
+
+.phase-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.action-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  backdrop-filter: blur(5px);
+  transition: all 0.2s ease;
+}
+
+.action-tag:hover {
+  border-color: var(--accent-1);
+  color: var(--accent-1);
+}
+
+/* ===== TOOLS ECOSYSTEM ===== */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.tool-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.tool-card:hover {
+  border-color: var(--accent-2);
+  transform: translateY(-3px);
+}
+
+.tool-category {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin-bottom: 0.6rem;
+}
+
+.tool-card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.tool-card p {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.tool-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tool-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  padding: 0.25rem 0.6rem;
+  background: rgba(123,92,255,0.1);
+  color: var(--accent-2);
+  border-radius: 6px;
+}
+
+/* ===== SKILLS MATRIX ===== */
+.skills-matrix {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.skill-group {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2rem;
+}
+
+.skill-group-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.skill-item {
+  margin-bottom: 1.2rem;
+}
+
+.skill-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.skill-priority {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.priority-critical {
+  background: rgba(255,107,107,0.15);
+  color: var(--accent-3);
+}
+
+.priority-high {
+  background: rgba(255,209,102,0.15);
+  color: var(--accent-4);
+}
+
+.priority-medium {
+  background: rgba(0,229,160,0.15);
+  color: var(--accent-1);
+}
+
+.skill-bar {
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 1s ease-out;
+}
+
+.skill-note {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+
+/* ===== WEEKLY PLAN ===== */
+.weekly-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.day-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.day-card:hover {
+  border-color: var(--accent-5);
+}
+
+.day-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.day-card:nth-child(1) .day-label { color: var(--accent-1); }
+.day-card:nth-child(2) .day-label { color: var(--accent-2); }
+.day-card:nth-child(3) .day-label { color: var(--accent-4); }
+.day-card:nth-child(4) .day-label { color: var(--accent-5); }
+.day-card:nth-child(5) .day-label { color: var(--accent-3); }
+
+.day-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 0.6rem;
+}
+
+.day-time {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-bottom: 0.8rem;
+}
+
+.day-tasks {
+  list-style: none;
+}
+
+.day-tasks li {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  padding: 0.3rem 0;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.day-tasks li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent-1);
+  font-size: 0.75rem;
+}
+
+/* ===== QUOTES / INSIGHTS ===== */
+.insight-box {
+  background: linear-gradient(135deg, rgba(123,92,255,0.08), rgba(0,229,160,0.05));
+  border: 1px solid rgba(123,92,255,0.2);
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin: 3rem 0;
+  position: relative;
+}
+
+.insight-box::before {
+  content: '"';
+  font-family: 'Playfair Display', serif;
+  font-size: 5rem;
+  color: var(--accent-2);
+  opacity: 0.3;
+  position: absolute;
+  top: 0.5rem;
+  left: 1.5rem;
+  line-height: 1;
+}
+
+.insight-text {
+  font-size: 1.1rem;
+  font-style: italic;
+  line-height: 1.8;
+  color: var(--text-primary);
+  padding-left: 1rem;
+}
+
+.insight-source {
+  margin-top: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  padding-left: 1rem;
+}
+
+/* ===== DANGER ZONE ===== */
+.danger-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.danger-card {
+  background: rgba(255,107,107,0.03);
+  border: 1px solid rgba(255,107,107,0.15);
+  border-radius: 16px;
+  padding: 1.8rem;
+}
+
+.danger-card h3 {
+  color: var(--accent-3);
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.danger-card p {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+/* ===== KPI SECTION ===== */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+}
+
+.kpi-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.kpi-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin-bottom: 0.3rem;
+}
+
+.kpi-card:nth-child(1) .kpi-value { color: var(--accent-1); }
+.kpi-card:nth-child(2) .kpi-value { color: var(--accent-2); }
+.kpi-card:nth-child(3) .kpi-value { color: var(--accent-4); }
+.kpi-card:nth-child(4) .kpi-value { color: var(--accent-5); }
+.kpi-card:nth-child(5) .kpi-value { color: var(--accent-3); }
+
+.kpi-label {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.kpi-target {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  text-align: center;
+  padding: 4rem 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.footer-motto {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.footer-motto .gradient-text {
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.footer-sub {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.footer-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 1.5rem;
+  letter-spacing: 0.1em;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 640px) {
+  .hero-stats { gap: 0.8rem; }
+  .stat-item { min-width: 100px; padding: 0.8rem 1rem; }
+  .stat-number { font-size: 1.5rem; }
+  .section { padding: 3rem 1rem; }
+  .tools-grid, .skills-matrix, .reality-grid, .danger-grid, .kpi-grid {
+    grid-template-columns: 1fr;
+  }
+  .weekly-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-label">Senior Fullstack Developer → AI-Augmented Leader</div>
+  <h1>Chiến Lược Thích Ứng<br><span class="gradient-text">Kỷ Nguyên AI/Agent</span></h1>
+  <p class="hero-subtitle">
+    Lộ trình chuyển đổi từ Senior Developer sang AI-Augmented Leader trong thời đại Agentic AI, MCP, và Platform Engineering — được xây dựng từ nghiên cứu thực tế 2025–2026.
+  </p>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-number">84%</div>
+      <div class="stat-label">Dev dùng AI tools</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">55%</div>
+      <div class="stat-label">Tăng tốc coding</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">80%</div>
+      <div class="stat-label">Doanh nghiệp có Platform Team</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">33%</div>
+      <div class="stat-label">Tin tưởng AI output</div>
+    </div>
+  </div>
+  <div class="scroll-indicator"><span></span></div>
+</section>
+
+<!-- ===== NAV ===== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#reality">Thực Tế</a>
+    <a href="#mindset">Tư Duy</a>
+    <a href="#roadmap">Lộ Trình</a>
+    <a href="#tools">Công Cụ</a>
+    <a href="#skills">Kỹ Năng</a>
+    <a href="#weekly">Lịch Tuần</a>
+    <a href="#dangers">Cảnh Báo</a>
+    <a href="#kpi">Đo Lường</a>
+  </div>
+</nav>
+
+<!-- ===== SECTION 1: REALITY CHECK ===== -->
+<section class="section fade-in" id="reality">
+  <div class="section-header">
+    <div class="section-tag">// Bức tranh toàn cảnh</div>
+    <h2 class="section-title">Thực Tế Ngành Dev Năm 2026</h2>
+    <p class="section-desc">AI không thay thế developer — nhưng developer biết dùng AI sẽ thay thế developer không biết dùng. Đây là những con số thực tế từ Stack Overflow Survey 2025, Gartner, và CNCF.</p>
+  </div>
+
+  <div class="reality-grid">
+    <div class="reality-card fade-in">
+      <div class="reality-icon">🤖</div>
+      <h3>Agentic Coding là chuẩn mới</h3>
+      <p>Từ autocomplete → AI Agents tự đọc codebase, lập kế hoạch, tạo file, sửa lỗi. <span class="reality-highlight">85% dev</span> dùng AI tools hàng ngày. Claude Code, Cursor, Copilot đang dẫn đầu cuộc chơi.</p>
+    </div>
+    <div class="reality-card fade-in">
+      <div class="reality-icon">⚡</div>
+      <h3>MCP — "USB-C" cho AI</h3>
+      <p>Model Context Protocol trở thành tiêu chuẩn kết nối AI ↔ Tools. Được Linux Foundation quản lý. <span class="reality-highlight">Hàng nghìn MCP servers</span> đã sẵn sàng — từ GitHub, Slack đến database.</p>
+    </div>
+    <div class="reality-card fade-in">
+      <div class="reality-icon">🏗️</div>
+      <h3>Platform Engineering bùng nổ</h3>
+      <p>Gartner dự báo <span class="reality-highlight">80% doanh nghiệp lớn</span> sẽ có Platform Team đến cuối 2026. AI agents trở thành "công dân hạng nhất" trong nền tảng, với RBAC, quotas và governance riêng.</p>
+    </div>
+    <div class="reality-card fade-in">
+      <div class="reality-icon">🎯</div>
+      <h3>Đo lường bằng Impact, không phải Output</h3>
+      <p><span class="reality-highlight">92% developers</span> muốn đo năng suất theo impact — đóng góp business goals, cải thiện UX — thay vì lines of code hay số bug fix.</p>
+    </div>
+  </div>
+
+  <div class="insight-box fade-in">
+    <p class="insight-text">Năm 2025 được cho là năm AI thay thế developer, nhưng điều đó thậm chí còn chưa đến gần. Developer chuyên nghiệp không "vibe coding" — họ kiểm soát. Họ giữ quyền quyết định về thiết kế hệ thống và chất lượng phần mềm.</p>
+    <p class="insight-source">— Warp CEO Zach Lloyd + Nghiên cứu arXiv (2512.14012)</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== SECTION 2: MINDSET SHIFT ===== -->
+<section class="section fade-in" id="mindset">
+  <div class="section-header">
+    <div class="section-tag">// Thay đổi tư duy</div>
+    <h2 class="section-title">5 Chuyển Đổi Tư Duy Cốt Lõi</h2>
+    <p class="section-desc">Trước khi thay đổi tool hay kỹ năng, cần thay đổi cách nghĩ. Đây là 5 mindset shifts quan trọng nhất cho senior developer trong thời đại AI.</p>
+  </div>
+
+  <div class="mindset-container">
+    <div class="mindset-row fade-in">
+      <div class="mindset-old">
+        <div class="mindset-label">Tư duy cũ</div>
+        <div class="mindset-text">Viết code nhanh, nhiều = giỏi</div>
+      </div>
+      <div class="mindset-arrow">→</div>
+      <div class="mindset-new">
+        <div class="mindset-label">Tư duy mới</div>
+        <div class="mindset-text">Thiết kế hệ thống đúng, ra quyết định tốt = giỏi. AI viết code, bạn kiến trúc.</div>
+      </div>
+    </div>
+
+    <div class="mindset-row fade-in">
+      <div class="mindset-old">
+        <div class="mindset-label">Tư duy cũ</div>
+        <div class="mindset-text">Tự code mọi thứ từ đầu</div>
+      </div>
+      <div class="mindset-arrow">→</div>
+      <div class="mindset-new">
+        <div class="mindset-label">Tư duy mới</div>
+        <div class="mindset-text">Orchestrate fleet of AI agents — delegate, review, refine. Quản lý như Tech Lead quản lý junior devs.</div>
+      </div>
+    </div>
+
+    <div class="mindset-row fade-in">
+      <div class="mindset-old">
+        <div class="mindset-label">Tư duy cũ</div>
+        <div class="mindset-text">Đo bằng velocity, deployment frequency</div>
+      </div>
+      <div class="mindset-arrow">→</div>
+      <div class="mindset-new">
+        <div class="mindset-label">Tư duy mới</div>
+        <div class="mindset-text">Đo bằng business impact: revenue enabled, cost avoided, time-to-value. Creativity > Velocity.</div>
+      </div>
+    </div>
+
+    <div class="mindset-row fade-in">
+      <div class="mindset-old">
+        <div class="mindset-label">Tư duy cũ</div>
+        <div class="mindset-text">Sợ AI lấy mất việc</div>
+      </div>
+      <div class="mindset-arrow">→</div>
+      <div class="mindset-new">
+        <div class="mindset-label">Tư duy mới</div>
+        <div class="mindset-text">AI là amplifier — khuếch đại năng lực. 10x engineer → 100x engineer. Nắm AI = sở hữu đòn bẩy.</div>
+      </div>
+    </div>
+
+    <div class="mindset-row fade-in">
+      <div class="mindset-old">
+        <div class="mindset-label">Tư duy cũ</div>
+        <div class="mindset-text">Chuyên sâu 1 stack, làm tốt 1 việc</div>
+      </div>
+      <div class="mindset-arrow">→</div>
+      <div class="mindset-new">
+        <div class="mindset-label">Tư duy mới</div>
+        <div class="mindset-text">Polyglot Architect — hiểu cross-domain: AI, Platform, Security, Business. AI giúp cross-language dễ hơn bao giờ.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== SECTION 3: ROADMAP ===== -->
+<section class="section fade-in" id="roadmap">
+  <div class="section-header">
+    <div class="section-tag">// Lộ trình 12 tháng</div>
+    <h2 class="section-title">Roadmap Chuyển Đổi 4 Giai Đoạn</h2>
+    <p class="section-desc">Một lộ trình thực tế, chia thành 4 phase, mỗi phase 3 tháng. Phù hợp cho senior fullstack developer đang muốn chuyển đổi sang AI-Augmented Leader / Platform Engineer.</p>
+  </div>
+
+  <div class="roadmap">
+    <div class="phase fade-in">
+      <div class="phase-dot"></div>
+      <div class="phase-time">Phase 1 — Tháng 1–3: Foundation</div>
+      <div class="phase-title">Thành Thạo AI Tools & Agentic Workflow</div>
+      <div class="phase-desc">Mục tiêu: Biến AI tools thành phần mở rộng tự nhiên của workflow hàng ngày. Không chỉ dùng — mà dùng hiệu quả. Xây dựng thói quen "AI-first" cho mọi task coding.</div>
+      <div class="phase-actions">
+        <span class="action-tag">Claude Code mastery</span>
+        <span class="action-tag">Cursor Agent Mode</span>
+        <span class="action-tag">CLAUDE.md / Rules for AI</span>
+        <span class="action-tag">Prompt Engineering</span>
+        <span class="action-tag">GitHub Copilot Pro+</span>
+        <span class="action-tag">AI Code Review (CodeRabbit)</span>
+        <span class="action-tag">MCP Server setup</span>
+        <span class="action-tag">"Best of N" pattern</span>
+      </div>
+    </div>
+
+    <div class="phase fade-in">
+      <div class="phase-dot"></div>
+      <div class="phase-time">Phase 2 — Tháng 4–6: Architecture & AI Integration</div>
+      <div class="phase-title">Kiến Trúc Hệ Thống Trong Thờii Đại AI</div>
+      <div class="phase-desc">Mục tiêu: Nâng cấp từ "developer dùng AI" lên "architect thiết kế hệ thống AI-ready". Hiểu cách tích hợp AI agents vào microservices, platform, và business workflow.</div>
+      <div class="phase-actions">
+        <span class="action-tag">System Design for AI</span>
+        <span class="action-tag">MCP Server development</span>
+        <span class="action-tag">RAG architecture</span>
+        <span class="action-tag">AI agent orchestration</span>
+        <span class="action-tag">LangChain / LangGraph</span>
+        <span class="action-tag">OpenTelemetry for AI</span>
+        <span class="action-tag">DevSecOps + AI</span>
+        <span class="action-tag">Cost optimization (FinOps)</span>
+      </div>
+    </div>
+
+    <div class="phase fade-in">
+      <div class="phase-dot"></div>
+      <div class="phase-time">Phase 3 — Tháng 7–9: Platform & Leadership</div>
+      <div class="phase-title">Platform Engineering & Team Enablement</div>
+      <div class="phase-desc">Mục tiêu: Xây dựng Internal Developer Platform, tạo golden paths cho team. Chuyển từ individual contributor sang leader — ngườii enable cả team dùng AI hiệu quả.</div>
+      <div class="phase-actions">
+        <span class="action-tag">Internal Developer Platform</span>
+        <span class="action-tag">Golden Paths design</span>
+        <span class="action-tag">AI governance & RBAC</span>
+        <span class="action-tag">Policy-as-Code</span>
+        <span class="action-tag">Team AI enablement</span>
+        <span class="action-tag">Developer Experience (DXI)</span>
+        <span class="action-tag">Backstage / Port IDP</span>
+        <span class="action-tag">GitOps + AI pipelines</span>
+      </div>
+    </div>
+
+    <div class="phase fade-in">
+      <div class="phase-dot"></div>
+      <div class="phase-time">Phase 4 — Tháng 10–12: Business Impact</div>
+      <div class="phase-title">AI-Driven Business Innovation</div>
+      <div class="phase-desc">Mục tiêu: Dùng tất cả kỹ năng đã xây dựng để tạo business impact thật sự — từ AI-powered products đến workflow automation. Đo lường bằng revenue, cost savings.</div>
+      <div class="phase-actions">
+        <span class="action-tag">AI product features</span>
+        <span class="action-tag">Workflow automation (n8n)</span>
+        <span class="action-tag">Multi-agent systems</span>
+        <span class="action-tag">ROI measurement</span>
+        <span class="action-tag">Technical strategy</span>
+        <span class="action-tag">Cross-team AI adoption</span>
+        <span class="action-tag">Conference talks</span>
+        <span class="action-tag">Open source contribution</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== SECTION 4: TOOLS ===== -->
+<section class="section fade-in" id="tools">
+  <div class="section-header">
+    <div class="section-tag">// Hệ sinh thái công cụ</div>
+    <h2 class="section-title">AI Tools Stack 2026</h2>
+    <p class="section-desc">Bộ công cụ được chọn lọc từ hàng trăm reviews và benchmarks thực tế. Ưu tiên những tools đã chứng minh giá trị trong production.</p>
+  </div>
+
+  <div class="tools-grid">
+    <div class="tool-card fade-in">
+      <div class="tool-category">Agentic IDE</div>
+      <h3>Cursor + Claude Code</h3>
+      <p>Cursor cho IDE-native workflow (multi-file refactor, agent mode). Claude Code cho terminal-based deep tasks (80.9% SWE-bench accuracy). Kết hợp cả hai cho max output.</p>
+      <div class="tool-tags">
+        <span class="tool-tag">Primary IDE</span>
+        <span class="tool-tag">CLI Agent</span>
+        <span class="tool-tag">Daily driver</span>
+      </div>
+    </div>
+
+    <div class="tool-card fade-in">
+      <div class="tool-category">AI Protocol</div>
+      <h3>MCP — Model Context Protocol</h3>
+      <p>Tiêu chuẩn mở kết nối AI với mọi data source và tool. SDK cho TypeScript, Python, Kotlin, C#. Xây MCP servers riêng cho hệ thống nội bộ — đây là kỹ năng vàng.</p>
+      <div class="tool-tags">
+        <span class="tool-tag">Open Standard</span>
+        <span class="tool-tag">Linux Foundation</span>
+        <span class="tool-tag">Must-learn</span>
+      </div>
+    </div>
+
+    <div class="tool-card fade-in">
+      <div class="tool-category">Code Review</div>
+      <h3>CodeRabbit + AI PR Review</h3>
+      <p>AI code review đạt 80.3% success rate. Tự động phát hiện bugs, gợi ý cải thiện, tạo sequence diagrams. Giảm bottleneck review cho tech lead.</p>
+      <div class="tool-tags">
+        <span class="tool-tag">PR Automation</span>
+        <span class="tool-tag">Quality Gate</span>
+      </div>
+    </div>
+
+    <div class="tool-card fade-in">
+      <div class="tool-category">AI Framework</div>
+      <h3>LangChain + LangGraph</h3>
+      <p>Framework xây dựng AI agents phức tạp. LangGraph cho multi-agent orchestration với state management. Tích hợp sẵn MCP tool source.</p>
+      <div class="tool-tags">
+        <span class="tool-tag">Agent Building</span>
+        <span class="tool-tag">RAG</span>
+        <span class="tool-tag">Production</span>
+      </div>
+    </div>
+
+    <div class="tool-card fade-in">
+      <div class="tool-category">Workflow Automation</div>
+      <h3>n8n + Antigravity</h3>
+      <p>n8n: Low-code workflow automation, self-hosted. Google Antigravity: Coding agent miễn phí (preview). Cả hai giúp democratize AI cho non-technical users trong team.</p>
+      <div class="tool-tags">
+        <span class="tool-tag">No-code AI</span>
+        <span class="tool-tag">Self-hosted</span>
+      </div>
+    </div>
+
+    <div class="tool-card fade-in">
+      <div class="tool-category">Observability</div>
+      <h3>OpenTelemetry + Grafana + Langfuse</h3>
+      <p>OpenTelemetry cho distributed tracing chuẩn. Grafana + Prometheus cho monitoring (43% dev dùng cho AI observability). Langfuse cho LLM-specific tracing.</p>
+      <div class="tool-tags">
+        <span class="tool-tag">AI Observability</span>
+        <span class="tool-tag">Vendor neutral</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== SECTION 5: SKILLS MATRIX ===== -->
+<section class="section fade-in" id="skills">
+  <div class="section-header">
+    <div class="section-tag">// Ma trận kỹ năng</div>
+    <h2 class="section-title">Kỹ Năng Cần Xây Dựng</h2>
+    <p class="section-desc">Phân loại theo nhóm kỹ năng và mức độ ưu tiên. Không cần học tất cả — chọn lane phù hợp và đào sâu.</p>
+  </div>
+
+  <div class="skills-matrix">
+    <div class="skill-group fade-in">
+      <div class="skill-group-title">🧠 AI & Agent Skills</div>
+      
+      <div class="skill-item">
+        <div class="skill-name">Prompt Engineering & Context Engineering <span class="skill-priority priority-critical">Critical</span></div>
+        <div class="skill-bar"><div class="skill-bar-fill" style="width:95%;background:var(--accent-3)"></div></div>
+        <div class="skill-note">Viết CLAUDE.md, rules files, system prompts chuyên sâu</div>
+      </div>
+      
+      <div class="skill-item">
+        <div class="skill-name">MCP Server Development <span class="skill-priority priority-critical">Critical</span></div>
+        <div class="skill-bar"><div class="skill-bar-fill" style="width:90%;background:var(--accent-3)"></div></div>
+        <div class="skill-note">Xây MCP servers cho hệ thống nội bộ (NestJS, PostgreSQL, Kafka)</div>
+      </div>
+      
+      <div class="skill-item">
+        <div class="skill-name">AI Agent Orchestration <span class="skill-priority priority-high">High</span></div>
+        <div class="skill-bar"><div class="skill-bar-fill" style="width:80%;background:var(--accent-4)"></div></div>
+        <div class="skill-note">Multi-agent workflows, LangChain/LangGraph, tool calling</div>
+      </div>
+      
+      <div class="skill-item">
+        <div class="skill-name">RAG (Retrieval Augmented Generation) <span class="skill-priority priority-high">High</span></div>
+        <div class="skill-bar"><div class="skill-bar-fill" style="width:75%;background:var(--accent-4)"></div></div>
+        <div class="skill-note">Vector databases, embedding, chunking strategies</div>
+      </div>
+    </div>
+
+    <div class="skill-group fade-in">
+      <div class="skill-group-title">🏛️ Architecture & Platform</div>
+      
+      <div class="skill-item">
+        <div class="skill-name">System Design for AI Era <span class="skill-priority priority-critical">Critical</span></div>
+        <div class="skill-bar"><div class="skill-bar-fill" style="width:90%;background:var(--accent-3)"></div></div>
+        <div class="skill-note">AI-ready architecture, agent integration, cost-aware design</div>
+      </div>
+      
+      <div class="skill-item">
+        <div class="skill-name">Platform Engineering <span class="skill-priority priority-high">High</span></div>
+        <div class="skill-bar"><div class="skill-bar-fill" style="width:85%;background:var(--accent-4)"></div></div>
+        <div class="skill-note">IDP, golden paths, self-service, policy-as-code</div>
+      </div>
+      
+      <div class="skill-item">
+        <div class="skill-name">DevSecOps + AI Security <span class="skill-priority priority-high">High</span></div>
+        <div class="skill-bar"><div class="skill-bar-fill" style="width:80%;background:var(--accent-4)"></div></div>
+        <div class="skill-note">AI supply chain security, SBOM, Zero Trust, OWASP LLM Top 10</div>
+      </div>
+      
+      <div class="skill-item">
+        <div class="skill-name">FinOps & AI Cost Management <span class="skill-priority priority-medium">Medium</span></div>
+        <div class="skill-bar"><div class="skill-bar-fill" style="width:65%;background:var(--accent-1)"></div></div>
+        <div class="skill-note">Token cost tracking, model selection, pre-deployment cost gates</div>
+      </div>
+    </div>
+
+    <div class="skill-group fade-in">
+      <div class="skill-group-title">👥 Leadership & Business</div>
+      
+      <div class="skill-item">
+        <div class="skill-name">AI Team Enablement <span class="skill-priority priority-critical">Critical</span></div>
+        <div class="skill-bar"><div class="skill-bar-fill" style="width:90%;background:var(--accent-3)"></div></div>
+        <div class="skill-note">Đào tạo team dùng AI, tạo guidelines, champion AI adoption</div>
+      </div>
+      
+      <div class="skill-item">
+        <div class="skill-name">Product Thinking <span class="skill-priority priority-high">High</span></div>
+        <div class="skill-bar"><div class="skill-bar-fill" style="width:80%;background:var(--accent-4)"></div></div>
+        <div class="skill-note">PRD writing, user story cho AI features, business case</div>
+      </div>
+      
+      <div class="skill-item">
+        <div class="skill-name">Technical Communication <span class="skill-priority priority-high">High</span></div>
+        <div class="skill-bar"><div class="skill-bar-fill" style="width:75%;background:var(--accent-4)"></div></div>
+        <div class="skill-note">RFC/ADR, tech blog, conference speaking, stakeholder alignment</div>
+      </div>
+      
+      <div class="skill-item">
+        <div class="skill-name">ROI Measurement <span class="skill-priority priority-medium">Medium</span></div>
+        <div class="skill-bar"><div class="skill-bar-fill" style="width:65%;background:var(--accent-1)"></div></div>
+        <div class="skill-note">Developer Experience Index, business impact metrics</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== SECTION 6: WEEKLY PLAN ===== -->
+<section class="section fade-in" id="weekly">
+  <div class="section-header">
+    <div class="section-tag">// Kế hoạch hàng tuần</div>
+    <h2 class="section-title">Lịch Học & Thực Hành Mỗi Tuần</h2>
+    <p class="section-desc">Mẫu lịch tuần cân bằng giữa công việc hiện tại, học AI skills mới, và xây dựng side projects. Dành cho ngườii đang làm fulltime — 2-3 giờ/ngày sau giờ làm.</p>
+  </div>
+
+  <div class="weekly-grid">
+    <div class="day-card fade-in">
+      <div class="day-label">Thứ 2 & Thứ 4</div>
+      <div class="day-title">AI Tools Deep Dive</div>
+      <div class="day-time">⏰ 2h/ngày (tối)</div>
+      <ul class="day-tasks">
+        <li>Thực hành Claude Code / Cursor trên task thật</li>
+        <li>Viết & cải tiến CLAUDE.md cho projects</li>
+        <li>Thử nghiệm MCP servers mới</li>
+        <li>Đọc changelogs & release notes</li>
+      </ul>
+    </div>
+
+    <div class="day-card fade-in">
+      <div class="day-label">Thứ 3 & Thứ 5</div>
+      <div class="day-title">Architecture & System Design</div>
+      <div class="day-time">⏰ 2h/ngày (tối)</div>
+      <ul class="day-tasks">
+        <li>Đọc tech blogs: The New Stack, CNCF</li>
+        <li>System design practice (AI-ready)</li>
+        <li>LangChain/LangGraph tutorials</li>
+        <li>Xây POC cho ý tưởng AI features</li>
+      </ul>
+    </div>
+
+    <div class="day-card fade-in">
+      <div class="day-label">Thứ 6</div>
+      <div class="day-title">Side Project & Building</div>
+      <div class="day-time">⏰ 2-3h (tối)</div>
+      <ul class="day-tasks">
+        <li>Xây MCP server cho hệ thống nội bộ</li>
+        <li>AI agent project cá nhân</li>
+        <li>Contribute open source MCP repos</li>
+        <li>Viết tech blog / document kinh nghiệm</li>
+      </ul>
+    </div>
+
+    <div class="day-card fade-in">
+      <div class="day-label">Thứ 7</div>
+      <div class="day-title">Community & Learning</div>
+      <div class="day-time">⏰ 3h (sáng)</div>
+      <ul class="day-tasks">
+        <li>Xem conference talks (PlatformCon, DevOpsCon)</li>
+        <li>Tham gia Discord/Slack communities</li>
+        <li>Review tuần: ghi chú insights</li>
+        <li>Lên plan cho tuần tới</li>
+      </ul>
+    </div>
+
+    <div class="day-card fade-in">
+      <div class="day-label">Chủ Nhật</div>
+      <div class="day-title">Rest & Reflect</div>
+      <div class="day-time">⏰ Nghỉ ngơi</div>
+      <ul class="day-tasks">
+        <li>Nghỉ ngơi hoàn toàn — tránh burnout</li>
+        <li>Đọc sách (non-technical cũng tốt)</li>
+        <li>Brainstorm ideas nhẹ nhàng</li>
+        <li>Chơi với AI tools cho vui, không áp lực</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== SECTION 7: DANGERS ===== -->
+<section class="section fade-in" id="dangers">
+  <div class="section-header">
+    <div class="section-tag">// Cảnh báo quan trọng</div>
+    <h2 class="section-title">6 Cạm Bẫy Cần Tránh</h2>
+    <p class="section-desc">Những sai lầm phổ biến mà developer hay mắc khi thích ứng với AI. Tránh được những điều này, bạn đã đi trước 80% ngườii khác.</p>
+  </div>
+
+  <div class="danger-grid">
+    <div class="danger-card fade-in">
+      <h3>⚠️ "Vibe Coding" không kiểm soát</h3>
+      <p>AI generate code nhanh nhưng chỉ 33% developer tin tưởng output. Debug code "gần đúng" của AI thường tốn nhiều thờii gian hơn tự viết. Luôn review, test, và hiểu code trước khi merge.</p>
+    </div>
+
+    <div class="danger-card fade-in">
+      <h3>⚠️ Tool hopping không mục đích</h3>
+      <p>Mỗi tuần có tool mới. Đừng chạy theo tất cả. Chọn 2-3 tools core, master chúng. Chỉ switch khi có lý do rõ ràng và đã đánh giá qua trial 2-4 tuần.</p>
+    </div>
+
+    <div class="danger-card fade-in">
+      <h3>⚠️ Bỏ qua fundamentals</h3>
+      <p>AI giỏi scaffolding nhưng tệ ở complex business logic, security compliance, high-scale architecture. Developer không vững foundations sẽ không phát hiện được lỗi của AI.</p>
+    </div>
+
+    <div class="danger-card fade-in">
+      <h3>⚠️ Quên security khi dùng AI</h3>
+      <p>AI agent có quyền truy cập code, terminal, data. Cần RBAC, audit trails, và governance cho mọi AI tool. OWASP Top 10 for LLMs là bắt buộc phải biết.</p>
+    </div>
+
+    <div class="danger-card fade-in">
+      <h3>⚠️ Học mà không build</h3>
+      <p>Xem tutorial ≠ biết làm. Chỉ có building thật mới tạo real confidence. Mỗi concept mới → lập tức áp dụng vào project thật hoặc side project.</p>
+    </div>
+
+    <div class="danger-card fade-in">
+      <h3>⚠️ Cô lập, không chia sẻ</h3>
+      <p>Giá trị lớn nhất của AI leader là enable cả team. Nếu chỉ dùng AI một mình mà không chia sẻ knowledge — bạn mới chỉ là power user, chưa phải leader.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== SECTION 8: KPI ===== -->
+<section class="section fade-in" id="kpi">
+  <div class="section-header">
+    <div class="section-tag">// Đo lường tiến trình</div>
+    <h2 class="section-title">KPIs — Biết Mình Đang Ở Đâu</h2>
+    <p class="section-desc">Đo lường sự tiến bộ bằng những chỉ số cụ thể. Review mỗi quý để điều chỉnh chiến lược.</p>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card fade-in">
+      <div class="kpi-value">50%</div>
+      <div class="kpi-label">Tasks dùng AI agents hoàn thành</div>
+      <div class="kpi-target">Target Q2: 30% → Q4: 60%</div>
+    </div>
+    <div class="kpi-card fade-in">
+      <div class="kpi-value">3+</div>
+      <div class="kpi-label">MCP servers tự xây dựng</div>
+      <div class="kpi-target">Cho hệ thống nội bộ & open source</div>
+    </div>
+    <div class="kpi-card fade-in">
+      <div class="kpi-value">2x</div>
+      <div class="kpi-label">Tăng tốc feature delivery</div>
+      <div class="kpi-target">So với baseline trước khi dùng AI</div>
+    </div>
+    <div class="kpi-card fade-in">
+      <div class="kpi-value">5+</div>
+      <div class="kpi-label">Team members enabled</div>
+      <div class="kpi-target">Đào tạo team dùng AI tools hiệu quả</div>
+    </div>
+    <div class="kpi-card fade-in">
+      <div class="kpi-value">1</div>
+      <div class="kpi-label">AI-powered product feature shipped</div>
+      <div class="kpi-target">Feature tạo real business impact</div>
+    </div>
+  </div>
+
+  <div class="insight-box fade-in" style="margin-top:3rem">
+    <p class="insight-text">Mỗi 1 điểm cải thiện trên Developer Experience Index tiết kiệm 13 phút/developer/tuần — tương đương 10 giờ/năm. Với team 100 dev, 1 điểm DXI ≈ $100,000/năm recovered productivity.</p>
+    <p class="insight-source">— DX Research, 4+ triệu data points từ 800 tổ chức</p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-motto">
+    Tương lai thuộc về ngườii <span class="gradient-text">tư duy, thích ứng, và chọn lựa thông minh.</span>
+  </div>
+  <p class="footer-sub">Code vẫn quan trọng. Nhưng nó không còn là trọng tâm duy nhất. Sự chuyển đổi đó không phải mối đe dọa — mà là cơ hội.</p>
+  <p class="footer-date">Cập nhật: Tháng 2, 2026 · Dữ liệu từ Stack Overflow, Gartner, CNCF, IEEE, arXiv</p>
+</footer>
+
+<script>
+// Intersection Observer for fade-in animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Active nav link on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100;
+    if (scrollY >= sectionTop) {
+      current = section.getAttribute('id');
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) {
+      link.classList.add('active');
+    }
+  });
+});
+</script>
+</body>
+</html>
