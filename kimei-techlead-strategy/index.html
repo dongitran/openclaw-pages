@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KIMEI Global Tech Lead Strategy | AI-Powered Engineering Excellence</title>
+    <title>KIMEI Global Tech Lead Strategy | My 90-Day Roadmap & Contribution Plan</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -20,6 +20,9 @@
             --border: rgba(148, 163, 184, 0.1);
             --gradient-1: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
             --gradient-2: linear-gradient(90deg, #06b6d4 0%, #6366f1 100%);
+            --gradient-warm: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+            --success: #10b981;
+            --warning: #f59e0b;
         }
 
         * {
@@ -115,7 +118,7 @@
         }
 
         .hero-content {
-            max-width: 900px;
+            max-width: 1000px;
             text-align: center;
         }
 
@@ -147,7 +150,7 @@
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 1.5rem;
@@ -163,8 +166,30 @@
         .hero p {
             font-size: 1.25rem;
             color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto 3rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-highlights {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .hero-highlight {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .hero-highlight::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: bold;
         }
 
         .cta-buttons {
@@ -209,7 +234,7 @@
 
         /* Stats Section */
         .stats {
-            padding: 5rem 5%;
+            padding: 4rem 5%;
             background: var(--bg-card);
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
@@ -217,8 +242,8 @@
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -228,7 +253,7 @@
         }
 
         .stat-number {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 800;
             background: var(--gradient-2);
             -webkit-background-clip: text;
@@ -239,21 +264,19 @@
         .stat-label {
             color: var(--text-secondary);
             font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
             margin-top: 0.5rem;
         }
 
         /* Section Styles */
         section {
-            padding: 6rem 5%;
+            padding: 5rem 5%;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
 
         .section-tag {
@@ -271,29 +294,29 @@
         }
 
         .section-header h2 {
-            font-size: 2.5rem;
+            font-size: 2.25rem;
             font-weight: 700;
             margin-bottom: 1rem;
         }
 
         .section-header p {
             color: var(--text-secondary);
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
         }
 
         /* Cards */
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
         }
 
         .card {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 2rem;
+            padding: 1.5rem;
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
@@ -330,18 +353,164 @@
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .card h3 {
-            font-size: 1.25rem;
+            font-size: 1.125rem;
             font-weight: 600;
             margin-bottom: 0.75rem;
         }
 
         .card p {
             color: var(--text-secondary);
-            font-size: 0.9375rem;
+            font-size: 0.9rem;
+        }
+
+        .card ul {
+            margin-top: 1rem;
+            padding-left: 1.2rem;
+        }
+
+        .card li {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 0.4rem;
+        }
+
+        /* Roadmap Tabs */
+        .roadmap-tabs {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .roadmap-tab {
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .roadmap-tab.active {
+            background: var(--gradient-1);
+            color: white;
+            border-color: transparent;
+        }
+
+        .roadmap-tab:hover:not(.active) {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Roadmap Content */
+        .roadmap-content {
+            display: none;
+        }
+
+        .roadmap-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .roadmap-phase {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .phase-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .phase-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .phase-badge.days-30 { background: rgba(245, 158, 11, 0.1); color: var(--warning); border: 1px solid rgba(245, 158, 11, 0.3); }
+        .phase-badge.days-60 { background: rgba(99, 102, 241, 0.1); color: var(--primary); border: 1px solid rgba(99, 102, 241, 0.3); }
+        .phase-badge.days-90 { background: rgba(16, 185, 129, 0.1); color: var(--success); border: 1px solid rgba(16, 185, 129, 0.3); }
+
+        .phase-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .phase-focus {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .phase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .phase-item {
+            background: var(--bg-elevated);
+            border-radius: 12px;
+            padding: 1.25rem;
+        }
+
+        .phase-item h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .phase-item ul {
+            padding-left: 1.2rem;
+        }
+
+        .phase-item li {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .phase-metrics {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+
+        .phase-metric {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .phase-metric .value {
+            font-weight: 700;
+            color: var(--accent);
         }
 
         /* Timeline */
@@ -362,7 +531,7 @@
 
         .timeline-item {
             position: relative;
-            padding-bottom: 3rem;
+            padding-bottom: 2.5rem;
         }
 
         .timeline-item::before {
@@ -386,6 +555,116 @@
 
         .timeline-item p {
             color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Contribution Areas */
+        .contribution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .contribution-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .contribution-card:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .contribution-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .contribution-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .contribution-title {
+            flex: 1;
+        }
+
+        .contribution-title h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .contribution-title span {
+            font-size: 0.8rem;
+            color: var(--accent);
+        }
+
+        .contribution-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .contribution-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .contribution-list li:last-child {
+            border-bottom: none;
+        }
+
+        .contribution-list li::before {
+            content: '→';
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Metrics Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        .metric-sublabel {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
         }
 
         /* Code Block */
@@ -418,36 +697,85 @@
         .code-dot.yellow { background: #f59e0b; }
         .code-dot.green { background: #10b981; }
 
-        /* Metrics */
-        .metrics-grid {
+        /* Integration Section */
+        .integration-flow {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            gap: 1rem;
         }
 
-        .metric-card {
+        .integration-step {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 1.5rem;
             text-align: center;
+            position: relative;
         }
 
-        .metric-value {
-            font-size: 2.5rem;
-            font-weight: 800;
+        .integration-step::after {
+            content: '→';
+            position: absolute;
+            right: -1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
             color: var(--accent);
+            font-size: 1.5rem;
+            font-weight: bold;
         }
 
-        .metric-label {
-            color: var(--text-secondary);
+        .integration-step:last-child::after {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .integration-step::after {
+                content: '↓';
+                right: 50%;
+                top: auto;
+                bottom: -1.5rem;
+                transform: translateX(50%);
+            }
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        .step-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-desc {
             font-size: 0.875rem;
-            margin-top: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        /* Full Width Sections */
+        .fullwidth-section {
+            max-width: 100%;
+            padding: 5rem 5%;
+            background: var(--bg-card);
+            margin: 0;
+        }
+
+        .fullwidth-content {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         /* Footer */
         footer {
-            background: var(--bg-card);
+            background: var(--bg-elevated);
             border-top: 1px solid var(--border);
             padding: 4rem 5%;
             text-align: center;
@@ -460,7 +788,7 @@
 
         footer p {
             color: var(--text-secondary);
-            max-width: 500px;
+            max-width: 600px;
             margin: 0 auto 2rem;
         }
 
@@ -474,7 +802,7 @@
         .social-links a {
             width: 44px;
             height: 44px;
-            background: var(--bg-elevated);
+            background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 8px;
             display: flex;
@@ -501,12 +829,23 @@
                 font-size: 2rem;
             }
 
-            .card-grid {
+            .card-grid, .contribution-grid {
                 grid-template-columns: 1fr;
             }
 
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .roadmap-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .roadmap-tab {
+                width: 100%;
+                max-width: 200px;
+                text-align: center;
             }
         }
 
@@ -521,6 +860,105 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Progress Bar */
+        .progress-bar {
+            height: 4px;
+            background: var(--bg-elevated);
+            border-radius: 2px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-1);
+            border-radius: 2px;
+            transition: width 0.5s ease;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box h4 {
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .highlight-box p, .highlight-box li {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .highlight-box ul {
+            padding-left: 1.2rem;
+        }
+
+        .highlight-box li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* Initiative Cards */
+        .initiative-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+
+        .initiative-card:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+            transform: translateX(5px);
+        }
+
+        .initiative-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .initiative-title {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .initiative-timeline {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            background: rgba(6, 182, 212, 0.1);
+            color: var(--accent);
+            border-radius: 50px;
+        }
+
+        .initiative-desc {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .initiative-impact {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .impact-tag {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .impact-tag strong {
+            color: var(--success);
+        }
     </style>
 </head>
 <body>
@@ -530,218 +968,795 @@
     <nav>
         <div class="logo">KIMEI × TECH LEAD</div>
         <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#vision">Vision</a></li>
-            <li><a href="#strategy">Strategy</a></li>
+            <li><a href="#roadmap">Roadmap</a></li>
+            <li><a href="#contribute">Contribution</a></li>
+            <li><a href="#integration">Integration</a></li>
+            <li><a href="#initiatives">Initiatives</a></li>
             <li><a href="#impact">Impact</a></li>
         </ul>
     </nav>
 
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <div class="badge">AI-Powered Engineering Excellence</div>
-            <h1>Transforming <span>KIMEI Global</span> Through Technical Leadership</h1>
-            <p>A comprehensive strategy for building world-class engineering teams, implementing AI-first development practices, and driving innovation in software outsourcing.</p>
+            <div class="badge">My Application for Tech Lead Position</div>
+            <h1>My 90-Day Roadmap to Transform <span>KIMEI Global</span></h1>
+            <p>A detailed integration plan, contribution strategy, and concrete milestones for my first 3 months as Tech Lead at KIMEI Global.</p>
+            
+            <div class="hero-highlights">
+                <span class="hero-highlight">30-60-90 Day Plan</span>
+                <span class="hero-highlight">6 Strategic Pillars</span>
+                <span class="hero-highlight">12 Key Initiatives</span>
+                <span class="hero-highlight">Measurable Outcomes</span>
+            </div>
+
             <div class="cta-buttons">
-                <a href="#strategy" class="btn btn-primary">Explore the Strategy</a>
-                <a href="https://kimei-global.com" target="_blank" class="btn btn-secondary">Visit KIMEI Global</a>
+                <a href="#roadmap" class="btn btn-primary">View My Roadmap</a>
+                <a href="#contribute" class="btn btn-secondary">How I'll Contribute</a>
             </div>
         </div>
     </section>
 
+    <!-- Quick Stats -->
     <div class="stats">
         <div class="stats-grid">
             <div class="stat-item">
+                <div class="stat-number">30</div>
+                <div class="stat-label">Days to Integration</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Focus Areas</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">12</div>
+                <div class="stat-label">Key Initiatives</div>
+            </div>
+            <div class="stat-item">
                 <div class="stat-number">80+</div>
-                <div class="stat-label">Engineers</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">150+</div>
-                <div class="stat-label">Projects</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">3</div>
-                <div class="stat-label">Locations</div>
+                <div class="stat-label">Engineers to Lead</div>
             </div>
             <div class="stat-item">
                 <div class="stat-number">30%</div>
-                <div class="stat-label">Faster Delivery</div>
+                <div class="stat-label">Faster Delivery Target</div>
             </div>
         </div>
     </div>
 
-    <section id="about">
+    <!-- 30-60-90 Day Roadmap -->
+    <section id="roadmap">
         <div class="section-header">
-            <span class="section-tag">About KIMEI</span>
-            <h2>Leading Software Outsourcing in Vietnam</h2>
-            <p>KIMEI Global is on a mission to become the leading software outsourcing provider in the region, serving clients across Japan, APAC, and North America.</p>
+            <span class="section-tag">My Onboarding Roadmap</span>
+            <h2>30-60-90 Day Integration Plan</h2>
+            <p>A structured approach to understand, contribute, and transform KIMEI's engineering culture and technical capabilities.</p>
         </div>
-        
-        <div class="card-grid">
-            <div class="card">
-                <div class="card-icon">🌏</div>
-                <h3>Global Reach</h3>
-                <p>Serving clients in Japan, Hong Kong, Taiwan, APAC, and North America with a multi-location presence in HCMC, Hanoi, and Japan.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">⚡</div>
-                <h3>Digital Transformation</h3>
-                <p>Expertise in AI/ML integration, microservices architecture, cloud migration, and modern engineering practices.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">👥</div>
-                <h3>Human-Centric Culture</h3>
-                <p>"Bring humans as the core of development" - fostering respect, learning, and mutual support across all teams.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">🏆</div>
-                <h3>Proven Excellence</h3>
-                <p>Trusted by leading brands like Mizuno, Le Creuset, and GITA Centre for mission-critical software solutions.</p>
-            </div>
+
+        <div class="roadmap-tabs">
+            <button class="roadmap-tab active" onclick="showPhase('days30')">Days 1-30</button>
+            <button class="roadmap-tab" onclick="showPhase('days60')">Days 31-60</button>
+            <button class="roadmap-tab" onclick="showPhase('days90')">Days 61-90</button>
         </div>
-    </section>
 
-    <section id="vision" style="background: var(--bg-card); margin: 0; max-width: 100%; padding: 6rem 5%;">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <div class="section-header">
-                <span class="section-tag">My Vision</span>
-                <h2>AI-First Engineering Excellence</h2>
-                <p>As Tech Lead, I will drive transformative change across three strategic pillars that align with KIMEI's growth phase and market positioning.</p>
-            </div>
-
-            <div class="code-block">
-                <div class="code-header">
-                    <div class="code-dot red"></div>
-                    <div class="code-dot yellow"></div>
-                    <div class="code-dot green"></div>
+        <!-- Phase 1: Days 1-30 -->
+        <div id="days30" class="roadmap-content active">
+            <div class="roadmap-phase">
+                <div class="phase-header">
+                    <span class="phase-badge days-30">DAYS 1-30</span>
+                    <h3 class="phase-title">Listen, Learn & Integrate</h3>
                 </div>
-                <pre>// My Tech Lead Vision for KIMEI Global
-const strategy = {
-  pillars: [
-    {
-      name: "Technical Architecture",
-      focus: "Microservices Excellence + AI Integration",
-      outcome: "30% faster delivery, 50% fewer incidents"
-    },
-    {
-      name: "Team Development", 
-      focus: "Mentorship + Growth Culture",
-      outcome: "20% internal promotion, 90% retention"
-    },
-    {
-      name: "AI-Assisted Engineering",
-      focus: "Standardized AI Workflows",
-      outcome: "80% AI adoption, 2x productivity"
-    }
-  ],
-  timeline: "6-month implementation with measurable milestones"
-};</pre>
+                <p class="phase-focus"><strong>Focus:</strong> Deep immersion into KIMEI's culture, codebase, people, and processes. Building trust and understanding before proposing changes.</p>
+                
+                <div class="phase-grid">
+                    <div class="phase-item">
+                        <h4>👥 People & Culture</h4>
+                        <ul>
+                            <li>1:1 with all 10+ Engineering Managers (30 mins each)</li>
+                            <li>Meet all 80+ engineers in small groups (5-6 people)</li>
+                            <li>Attend daily standups across 3 offices (rotating)</li>
+                            <li>Shadow PMs and Designers to understand workflows</li>
+                            <li>Participate in existing ceremonies (retro, planning)</li>
+                            <li>Document cultural observations and team dynamics</li>
+                        </ul>
+                    </div>
+                    <div class="phase-item">
+                        <h4>💻 Technical Deep Dive</h4>
+                        <ul>
+                            <li>Review all active repositories (architecture audit)</li>
+                            <li>Understand CI/CD pipelines and deployment flows</li>
+                            <li>Analyze current observability setup (metrics, logs)</li>
+                            <li>Review security practices and compliance status</li>
+                            <li>Map microservices and their interdependencies</li>
+                            <li>Identify technical debt hotspots</li>
+                        </ul>
+                    </div>
+                    <div class="phase-item">
+                        <h4>📊 Process Analysis</h4>
+                        <ul>
+                            <li>Document current SDLC and release cycles</li>
+                            <li>Review code review practices and bottlenecks</li>
+                            <li>Analyze incident response procedures</li>
+                            <li>Assess testing coverage and QA processes</li>
+                            <li>Understand project estimation methods</li>
+                            <li>Review documentation standards</li>
+                        </ul>
+                    </div>
+                    <div class="phase-item">
+                        <h4>🎯 Quick Wins</h4>
+                        <ul>
+                            <li>Identify 3-5 immediate improvements (low effort, high impact)</li>
+                            <li>Fix critical bugs or performance issues</li>
+                            <li>Improve developer onboarding documentation</li>
+                            <li>Establish weekly Tech Lead office hours</li>
+                            <li>Create Slack channel for engineering discussions</li>
+                            <li>Start weekly "Tech Radar" newsletter</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="phase-metrics">
+                    <div class="phase-metric"><span class="value">30+</span> 1:1 meetings completed</div>
+                    <div class="phase-metric"><span class="value">100%</span> Repositories reviewed</div>
+                    <div class="phase-metric"><span class="value">5</span> Quick wins delivered</div>
+                    <div class="phase-metric"><span class="value">1</span> Technical assessment report</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 2: Days 31-60 -->
+        <div id="days60" class="roadmap-content">
+            <div class="roadmap-phase">
+                <div class="phase-header">
+                    <span class="phase-badge days-60">DAYS 31-60</span>
+                    <h3 class="phase-title">Strategize & Build</h3>
+                </div>
+                <p class="phase-focus"><strong>Focus:</strong> Develop comprehensive strategy, build foundational tools, and start implementing high-priority initiatives.</p>
+                
+                <div class="phase-grid">
+                    <div class="phase-item">
+                        <h4>📋 Strategy Development</h4>
+                        <ul>
+                            <li>Present technical assessment findings to leadership</li>
+                            <li>Co-create 6-month technical roadmap with EM team</li>
+                            <li>Define OKRs for engineering excellence</li>
+                            <li>Establish AI adoption framework and guidelines</li>
+                            <li>Create observability standards and SLOs</li>
+                            <li>Design mentorship program structure</li>
+                        </ul>
+                    </div>
+                    <div class="phase-item">
+                        <h4>🛠️ Foundation Building</h4>
+                        <ul>
+                            <li>Set up centralized observability dashboard</li>
+                            <li>Implement GitHub Copilot for all engineers</li>
+                            <li>Create shared Terraform modules for infrastructure</li>
+                            <li>Establish coding standards and linting rules</li>
+                            <li>Build reusable CI/CD templates</li>
+                            <li>Launch internal documentation portal</li>
+                        </ul>
+                    </div>
+                    <div class="phase-item">
+                        <h4>🤝 Team Building</h4>
+                        <ul>
+                            <li>Launch "KIMEI Tech Sessions" (bi-weekly)</li>
+                            <li>Start mentorship program pilot (10 pairs)</li>
+                            <li>Organize cross-office virtual coffee chats</li>
+                            <li>Create engineering guilds (Frontend, Backend, DevOps)</li>
+                            <li>Establish "Innovation Friday" for experimentation</li>
+                            <li>Set up engineering awards recognition</li>
+                        </ul>
+                    </div>
+                    <div class="phase-item">
+                        <h4>🚀 Pilot Projects</h4>
+                        <ul>
+                            <li>Select 2 teams for AI-assisted development pilot</li>
+                            <li>Implement distributed tracing in 1 critical service</li>
+                            <li>Roll out new code review process with 1 team</li>
+                            <li>Run TDD workshop series (4 sessions)</li>
+                            <li>Deploy automated security scanning</li>
+                            <li>Launch performance monitoring initiative</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="phase-metrics">
+                    <div class="phase-metric"><span class="value">80+</span> Engineers with Copilot</div>
+                    <div class="phase-metric"><span class="value">10</span> Mentorship pairs active</div>
+                    <div class="phase-metric"><span class="value">3</span> Pilot projects launched</div>
+                    <div class="phase-metric"><span class="value">1</span> 6-month roadmap published</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 3: Days 61-90 -->
+        <div id="days90" class="roadmap-content">
+            <div class="roadmap-phase">
+                <div class="phase-header">
+                    <span class="phase-badge days-90">DAYS 61-90</span>
+                    <h3 class="phase-title">Scale & Optimize</h3>
+                </div>
+                <p class="phase-focus"><strong>Focus:</strong> Scale successful initiatives across all teams, measure impact, and establish sustainable practices.</p>
+                
+                <div class="phase-grid">
+                    <div class="phase-item">
+                        <h4>📈 Scale Initiatives</h4>
+                        <ul>
+                            <li>Roll out AI tools to all 80+ engineers</li>
+                            <li>Expand mentorship program company-wide</li>
+                            <li>Implement observability across all services</li>
+                            <li>Standardize code review process globally</li>
+                            <li>Launch cross-location team rotations</li>
+                            <li>Deploy automated testing to all projects</li>
+                        </ul>
+                    </div>
+                    <div class="phase-item">
+                        <h4>📊 Measure & Report</h4>
+                        <ul>
+                            <li>Publish first Engineering Health Report</li>
+                            <li>Track and publish DORA metrics (deployment freq, MTTR)</li>
+                            <li>Measure AI adoption rates and productivity gains</li>
+                            <li>Survey team satisfaction and engagement</li>
+                            <li>Calculate time saved from automation</li>
+                            <li>Present 90-day impact to executive team</li>
+                        </ul>
+                    </div>
+                    <div class="phase-item">
+                        <h4>🔄 Process Optimization</h4>
+                        <ul>
+                            <li>Refine workflows based on feedback</li>
+                            <li>Establish quarterly planning rituals</li>
+                            <li>Create incident post-mortem templates</li>
+                            <li>Standardize on-call rotation across teams</li>
+                            <li>Implement architectural decision records (ADRs)</li>
+                            <li>Launch engineering blog and open source contributions</li>
+                        </ul>
+                    </div>
+                    <div class="phase-item">
+                        <h4>🎯 Next Quarter Planning</h4>
+                        <ul>
+                            <li>Gather feedback on first 90 days</li>
+                            <li>Identify areas for deeper investment</li>
+                            <li>Plan team expansion and hiring priorities</li>
+                            <li>Design advanced training programs</li>
+                            <li>Prepare for engineering offsite/retreat</li>
+                            <li>Set ambitious but achievable Q2 goals</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="phase-metrics">
+                    <div class="phase-metric"><span class="value">80%</span> AI tool adoption</div>
+                    <div class="phase-metric"><span class="value">30+</span> Mentorship pairs</div>
+                    <div class="phase-metric"><span class="value">100%</span> Services observable</div>
+                    <div class="phase-metric"><span class="value">1</span> 90-day impact report</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="strategy">
+    <!-- My Contribution Areas -->
+    <section id="contribute" class="fullwidth-section">
+        <div class="fullwidth-content">
+            <div class="section-header">
+                <span class="section-tag">How I'll Contribute</span>
+                <h2>Six Strategic Contribution Areas</h2>
+                <p>Specific ways I will add value to KIMEI Global across technical, cultural, and organizational dimensions.</p>
+            </div>
+
+            <div class="contribution-grid">
+                <!-- Technical Architecture -->
+                <div class="contribution-card">
+                    <div class="contribution-header">
+                        <div class="contribution-icon">🏗️</div>
+                        <div class="contribution-title">
+                            <h3>Technical Architecture</h3>
+                            <span>Foundation for Scale</span>
+                        </div>
+                    </div>
+                    <ul class="contribution-list">
+                        <li>Design and document reference architecture for microservices</li>
+                        <li>Establish API design standards (REST, gRPC, GraphQL)</li>
+                        <li>Create service template with best practices built-in</li>
+                        <li>Implement service mesh for secure inter-service communication</li>
+                        <li>Design multi-region disaster recovery strategy</li>
+                        <li>Establish performance budgets and SLAs per service</li>
+                        <li>Create architecture review board and RFC process</li>
+                    </ul>
+                </div>
+
+                <!-- AI-Assisted Engineering -->
+                <div class="contribution-card">
+                    <div class="contribution-header">
+                        <div class="contribution-icon">🤖</div>
+                        <div class="contribution-title">
+                            <h3>AI-Assisted Engineering</h3>
+                            <span>2x Productivity Goal</span>
+                        </div>
+                    </div>
+                    <ul class="contribution-list">
+                        <li>Deploy GitHub Copilot Enterprise to all 80+ engineers</li>
+                        <li>Create internal AI prompt library for common tasks</li>
+                        <li>Train teams on effective AI pair programming</li>
+                        <li>Establish AI code review guidelines and guardrails</li>
+                        <li>Build internal AI agents for repetitive tasks</li>
+                        <li>Create documentation on responsible AI usage</li>
+                        <li>Measure and report AI productivity gains monthly</li>
+                    </ul>
+                </div>
+
+                <!-- Observability & Reliability -->
+                <div class="contribution-card">
+                    <div class="contribution-header">
+                        <div class="contribution-icon">📊</div>
+                        <div class="contribution-title">
+                            <h3>Observability & Reliability</h3>
+                            <span>50% Fewer Incidents</span>
+                        </div>
+                    </div>
+                    <ul class="contribution-list">
+                        <li>Implement distributed tracing (Jaeger/Tempo) across all services</li>
+                        <li>Build unified observability dashboard (Grafana)</li>
+                        <li>Define and monitor SLOs for critical user journeys</li>
+                        <li>Create automated alerting with PagerDuty integration</li>
+                        <li>Establish error budget policies and review process</li>
+                        <li>Implement chaos engineering practices</li>
+                        <li>Build runbook library for common incidents</li>
+                    </ul>
+                </div>
+
+                <!-- Developer Experience -->
+                <div class="contribution-card">
+                    <div class="contribution-header">
+                        <div class="contribution-icon">⚡</div>
+                        <div class="contribution-title">
+                            <h3>Developer Experience</h3>
+                            <span>30% Faster Delivery</span>
+                        </div>
+                    </div>
+                    <ul class="contribution-list">
+                        <li>Create local development environment with Docker Compose</li>
+                        <li>Reduce build times by 50% through caching and optimization</li>
+                        <li>Implement feature flags for safer deployments</li>
+                        <li>Build internal developer portal (Backstage or custom)</li>
+                        <li>Standardize CI/CD with reusable GitHub Actions</li>
+                        <li>Create pre-commit hooks for code quality</li>
+                        <li>Establish "platform team" to support product teams</li>
+                    </ul>
+                </div>
+
+                <!-- Team Development -->
+                <div class="contribution-card">
+                    <div class="contribution-header">
+                        <div class="contribution-icon">🌱</div>
+                        <div class="contribution-title">
+                            <h3>Team Development</h3>
+                            <span>20% Internal Promotions</span>
+                        </div>
+                    </div>
+                    <ul class="contribution-list">
+                        <li>Design competency matrix for all engineering levels</li>
+                        <li>Launch structured mentorship program (Junior→Senior)</li>
+                        <li>Create career ladders with clear promotion criteria</li>
+                        <li>Establish bi-weekly "KIMEI Tech Sessions" for learning</li>
+                        <li>Organize quarterly internal conferences</li>
+                        <li>Provide $1,500 annual learning budget per engineer</li>
+                        <li>Create "Staff Engineer" track for technical leadership</li>
+                    </ul>
+                </div>
+
+                <!-- Cross-Location Culture -->
+                <div class="contribution-card">
+                    <div class="contribution-header">
+                        <div class="contribution-icon">🌍</div>
+                        <div class="contribution-title">
+                            <h3>Cross-Location Culture</h3>
+                            <span>90% Retention Target</span>
+                        </div>
+                    </div>
+                    <ul class="contribution-list">
+                        <li>Implement virtual coffee randomizer across offices</li>
+                        <li>Organize quarterly in-person "KIMEI Connect" events</li>
+                        <li>Create cross-location project teams deliberately</li>
+                        <li>Establish async communication best practices</li>
+                        <li>Rotate Tech Leads between offices for knowledge sharing</li>
+                        <li>Build digital "water cooler" in Slack for casual chat</li>
+                        <li>Celebrate wins across all locations equally</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integration Strategy -->
+    <section id="integration">
         <div class="section-header">
-            <span class="section-tag">Technical Strategy</span>
-            <h2>Building for Scale & Reliability</h2>
+            <span class="section-tag">How I'll Join</span>
+            <h2>My Integration Strategy</h2>
+            <p>A deliberate approach to joining KIMEI that respects existing culture while bringing fresh perspectives.</p>
         </div>
 
-        <div class="card-grid">
+        <div class="highlight-box">
+            <h4>🎯 Core Integration Principles</h4>
+            <ul>
+                <li><strong>Listen First:</strong> Spend 30 days understanding before proposing changes</li>
+                <li><strong>Respect History:</strong> Acknowledge what works well before suggesting improvements</li>
+                <li><strong>Build Trust:</strong> Deliver quick wins to establish credibility</li>
+                <li><strong>Include Everyone:</strong> Ensure all 3 offices feel represented in decisions</li>
+                <li><strong>Be Transparent:</strong> Share my roadmap and reasoning openly</li>
+            </ul>
+        </div>
+
+        <div class="integration-flow" style="margin-top: 2rem;">
+            <div class="integration-step">
+                <div class="step-number">1</div>
+                <div class="step-title">Observe & Learn</div>
+                <div class="step-desc">Shadow teams, attend ceremonies, understand current workflows without judgment</div>
+            </div>
+            <div class="integration-step">
+                <div class="step-number">2</div>
+                <div class="step-title">Build Relationships</div>
+                <div class="step-desc">1:1s with all EMs and key engineers across all locations</div>
+            </div>
+            <div class="integration-step">
+                <div class="step-number">3</div>
+                <div class="step-title">Identify Opportunities</div>
+                <div class="step-desc">Find areas where my experience can add immediate value</div>
+            </div>
+            <div class="integration-step">
+                <div class="step-number">4</div>
+                <div class="step-title">Deliver Quick Wins</div>
+                <div class="step-desc">Implement low-effort, high-impact improvements in first 30 days</div>
+            </div>
+            <div class="integration-step">
+                <div class="step-number">5</div>
+                <div class="step-title">Co-Create Strategy</div>
+                <div class="step-desc">Work with team to design roadmap, not impose from outside</div>
+            </div>
+        </div>
+
+        <div class="card-grid" style="margin-top: 3rem;">
             <div class="card">
-                <div class="card-icon">🔧</div>
-                <h3>Microservices Architecture</h3>
-                <p>Implement observability-first architecture with Prometheus, Grafana, and distributed tracing. Standardize Node.js + Python integration with gRPC for internal services.</p>
+                <div class="card-icon">🤝</div>
+                <h3>Stakeholder Management</h3>
+                <p>Weekly syncs with CTO, bi-weekly with Engineering Managers, monthly all-hands updates. Transparent communication about progress and challenges.</p>
             </div>
             <div class="card">
-                <div class="card-icon">🤖</div>
-                <h3>AI-Assisted Development</h3>
-                <p>Deploy GitHub Copilot, Claude 3.5 Sonnet across teams. Create prompt engineering guidelines, AI code review workflows, and responsible AI usage policies.</p>
+                <div class="card-icon">⚖️</div>
+                <h3>Balancing Priorities</h3>
+                <p>Juggle short-term delivery needs with long-term technical investments. Use data to justify refactoring and platform work.</p>
             </div>
             <div class="card">
-                <div class="card-icon">☁️</div>
-                <h3>Cloud-Native DevOps</h3>
-                <p>Standardize Kubernetes deployments with HPA, implement GitHub Actions CI/CD, adopt Terraform IaC, and establish multi-cloud strategy (AWS/Azure/GCP).</p>
+                <div class="card-icon">🌉</div>
+                <h3>Cross-Functional Bridge</h3>
+                <p>Connect engineering with Product, Design, and Business teams. Ensure technical decisions align with business goals.</p>
             </div>
             <div class="card">
-                <div class="card-icon">✅</div>
-                <h3>Engineering Excellence</h3>
-                <p>Roll out TDD in 4 phases, achieve 75% code coverage minimum, implement automated testing pyramid, and establish performance SLAs (p95 < 200ms).</p>
+                <div class="card-icon">📣</div>
+                <h3>Communication Cadence</h3>
+                <ul>
+                    <li>Daily: Standup participation</li>
+                    <li>Weekly: Engineering updates</li>
+                    <li>Bi-weekly: Tech Sessions</li>
+                    <li>Monthly: All-hands presentation</li>
+                    <li>Quarterly: Strategy reviews</li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <section style="background: var(--bg-card); margin: 0; max-width: 100%; padding: 6rem 5%;">
-        <div style="max-width: 1200px; margin: 0 auto;">
+    <!-- Key Initiatives -->
+    <section id="initiatives" class="fullwidth-section">
+        <div class="fullwidth-content">
             <div class="section-header">
-                <span class="section-tag">Team Strategy</span>
-                <h2>Growing World-Class Engineers</h2>
+                <span class="section-tag">What I'll Deliver</span>
+                <h2>12 Key Initiatives</h2>
+                <p>Concrete projects and programs I will lead in my first 6 months, with clear timelines and measurable outcomes.</p>
             </div>
 
-            <div class="timeline">
-                <div class="timeline-item">
-                    <h4>Tiered Mentorship Program</h4>
-                    <p>Structured mentorship from Junior → Senior → Staff → Principal levels. Weekly 1:1s, bi-weekly code review pairing, and quarterly career progression reviews with clear competency matrix.</p>
+            <div class="initiative-card">
+                <div class="initiative-header">
+                    <span class="initiative-title">🎯 1. AI-First Engineering Program</span>
+                    <span class="initiative-timeline">Month 1-3</span>
                 </div>
-                <div class="timeline-item">
-                    <h4>KIMEI Tech Sessions</h4>
-                    <p>Bi-weekly tech talks rotating across HCMC, Hanoi, and Japan. Topics span microservices, AI-assisted development, security, and leadership. All sessions recorded to internal knowledge base.</p>
+                <p class="initiative-desc">Deploy GitHub Copilot Enterprise to all engineers, create prompt engineering guidelines, train teams on AI pair programming, and measure productivity gains. Establish AI code review workflows and responsible AI policies.</p>
+                <div class="initiative-impact">
+                    <span class="impact-tag">Target: <strong>80% adoption</strong></span>
+                    <span class="impact-tag">Impact: <strong>2x productivity</strong></span>
+                    <span class="impact-tag">Metric: <strong>Code velocity +40%</strong></span>
                 </div>
-                <div class="timeline-item">
-                    <h4>Cross-Location Bonding</h4>
-                    <p>Virtual coffee randomizers, weekly tech trivia, quarterly "KIMEI Connect" in-person gatherings. Building cohesion across 3 offices through intentional culture initiatives.</p>
+            </div>
+
+            <div class="initiative-card">
+                <div class="initiative-header">
+                    <span class="initiative-title">🔍 2. Observability-First Architecture</span>
+                    <span class="initiative-timeline">Month 2-4</span>
                 </div>
-                <div class="timeline-item">
-                    <h4>Recognition & Growth</h4>
-                    <p>Monthly engineering awards (Innovator, Quality Champion, Rising Star), peer kudos system, quarterly promotions, $1,500 annual learning budget per engineer.</p>
+                <p class="initiative-desc">Implement distributed tracing across all microservices, build unified Grafana dashboard, define SLOs for critical paths, and establish error budget policies. Deploy automated alerting and create runbook library.</p>
+                <div class="initiative-impact">
+                    <span class="impact-tag">Target: <strong>100% services covered</strong></span>
+                    <span class="impact-tag">Impact: <strong>50% fewer incidents</strong></span>
+                    <span class="impact-tag">Metric: <strong>MTTR &lt; 30 min</strong></span>
+                </div>
+            </div>
+
+            <div class="initiative-card">
+                <div class="initiative-header">
+                    <span class="initiative-title">🌱 3. Structured Mentorship Program</span>
+                    <span class="initiative-timeline">Month 2-6</span>
+                </div>
+                <p class="initiative-desc">Launch formal mentorship matching 30+ Junior→Senior pairs. Create competency matrices, career ladders, and promotion criteria. Establish weekly 1:1s and quarterly career reviews.</p>
+                <div class="initiative-impact">
+                    <span class="impact-tag">Target: <strong>30+ mentorship pairs</strong></span>
+                    <span class="impact-tag">Impact: <strong>20% internal promotions</strong></span>
+                    <span class="impact-tag">Metric: <strong>90% retention</strong></span>
+                </div>
+            </div>
+
+            <div class="initiative-card">
+                <div class="initiative-header">
+                    <span class="initiative-title">⚡ 4. Developer Experience Platform</span>
+                    <span class="initiative-timeline">Month 2-5</span>
+                </div>
+                <p class="initiative-desc">Build internal developer portal with service catalog, documentation, and self-service tools. Create local dev environment with Docker Compose. Optimize CI/CD to reduce build times by 50%.</p>
+                <div class="initiative-impact">
+                    <span class="impact-tag">Target: <strong>Portal for 80+ engineers</strong></span>
+                    <span class="impact-tag">Impact: <strong>30% faster delivery</strong></span>
+                    <span class="impact-tag">Metric: <strong>Build time &lt; 5 min</strong></span>
+                </div>
+            </div>
+
+            <div class="initiative-card">
+                <div class="initiative-header">
+                    <span class="initiative-title">🎓 5. KIMEI Tech Sessions</span>
+                    <span class="initiative-timeline">Month 1-ongoing</span>
+                </div>
+                <p class="initiative-desc">Bi-weekly tech talks rotating across HCMC, Hanoi, and Japan. Topics: microservices, AI development, security, leadership. Record all sessions to internal knowledge base. Guest speakers from industry.</p>
+                <div class="initiative-impact">
+                    <span class="impact-tag">Target: <strong>100% participation</strong></span>
+                    <span class="impact-tag">Impact: <strong>Continuous learning culture</strong></span>
+                    <span class="impact-tag">Metric: <strong>24 sessions/year</strong></span>
+                </div>
+            </div>
+
+            <div class="initiative-card">
+                <div class="initiative-header">
+                    <span class="initiative-title">🌍 6. Cross-Location Culture Building</span>
+                    <span class="initiative-timeline">Month 1-6</span>
+                </div>
+                <p class="initiative-desc">Implement virtual coffee randomizer, quarterly "KIMEI Connect" in-person events, and cross-location project teams. Establish async communication guidelines and rotate engineers between offices.</p>
+                <div class="initiative-impact">
+                    <span class="impact-tag">Target: <strong>All 3 offices connected</strong></span>
+                    <span class="impact-tag">Impact: <strong>Unified culture</strong></span>
+                    <span class="impact-tag">Metric: <strong>90% engagement score</strong></span>
+                </div>
+            </div>
+
+            <div class="initiative-card">
+                <div class="initiative-header">
+                    <span class="initiative-title">✅ 7. Testing & Quality Initiative</span>
+                    <span class="initiative-timeline">Month 3-6</span>
+                </div>
+                <p class="initiative-desc">Roll out TDD in 4 phases, achieve 75% code coverage minimum, implement automated testing pyramid (unit/integration/e2e), and establish performance SLAs (p95 &lt; 200ms).</p>
+                <div class="initiative-impact">
+                    <span class="impact-tag">Target: <strong>75% coverage</strong></span>
+                    <span class="impact-tag">Impact: <strong>50% fewer bugs</strong></span>
+                    <span class="impact-tag">Metric: <strong>&lt; 1% defect rate</strong></span>
+                </div>
+            </div>
+
+            <div class="initiative-card">
+                <div class="initiative-header">
+                    <span class="initiative-title">🔐 8. Security-First Development</span>
+                    <span class="initiative-timeline">Month 2-4</span>
+                </div>
+                <p class="initiative-desc">Implement automated security scanning in CI/CD, establish secure coding guidelines, conduct security training for all engineers, and create incident response playbooks.</p>
+                <div class="initiative-impact">
+                    <span class="impact-tag">Target: <strong>100% repos scanned</strong></span>
+                    <span class="impact-tag">Impact: <strong>Zero security incidents</strong></span>
+                    <span class="impact-tag">Metric: <strong>SOC 2 readiness</strong></span>
+                </div>
+            </div>
+
+            <div class="initiative-card">
+                <div class="initiative-header">
+                    <span class="initiative-title">☁️ 9. Cloud-Native DevOps</span>
+                    <span class="initiative-timeline">Month 3-5</span>
+                </div>
+                <p class="initiative-desc">Standardize Kubernetes deployments with HPA, implement GitOps with ArgoCD, adopt Terraform IaC modules, and establish multi-cloud strategy foundations (AWS/Azure/GCP).</p>
+                <div class="initiative-impact">
+                    <span class="impact-tag">Target: <strong>GitOps for all services</strong></span>
+                    <span class="impact-tag">Impact: <strong>Deployment automation</strong></span>
+                    <span class="impact-tag">Metric: <strong>10+ deploys/day</strong></span>
+                </div>
+            </div>
+
+            <div class="initiative-card">
+                <div class="initiative-header">
+                    <span class="initiative-title">📋 10. Engineering Health Metrics</span>
+                    <span class="initiative-timeline">Month 2-ongoing</span>
+                </div>
+                <p class="initiative-desc">Implement DORA metrics tracking (deployment frequency, lead time, MTTR, change failure rate), publish monthly Engineering Health Report, and create dashboards for team visibility.</p>
+                <div class="initiative-impact">
+                    <span class="impact-tag">Target: <strong>Monthly reports</strong></span>
+                    <span class="impact-tag">Impact: <strong>Data-driven decisions</strong></span>
+                    <span class="impact-tag">Metric: <strong>Elite DORA scores</strong></span>
+                </div>
+            </div>
+
+            <div class="initiative-card">
+                <div class="initiative-header">
+                    <span class="initiative-title">🏆 11. Recognition & Awards Program</span>
+                    <span class="initiative-timeline">Month 1-ongoing</span>
+                </div>
+                <p class="initiative-desc">Monthly engineering awards (Innovator, Quality Champion, Rising Star), peer kudos system, quarterly promotions, and public celebration of wins across all channels.</p>
+                <div class="initiative-impact">
+                    <span class="impact-tag">Target: <strong>Monthly awards</strong></span>
+                    <span class="impact-tag">Impact: <strong>Motivated teams</strong></span>
+                    <span class="impact-tag">Metric: <strong>90% recognition rate</strong></span>
+                </div>
+            </div>
+
+            <div class="initiative-card">
+                <div class="initiative-header">
+                    <span class="initiative-title">📚 12. Knowledge Management System</span>
+                    <span class="initiative-timeline">Month 2-4</span>
+                </div>
+                <p class="initiative-desc">Build centralized documentation portal, create architecture decision records (ADRs), establish runbook library, and implement "docs as code" practices with PR reviews for documentation.</p>
+                <div class="initiative-impact">
+                    <span class="impact-tag">Target: <strong>100% key docs covered</strong></span>
+                    <span class="impact-tag">Impact: <strong>Faster onboarding</strong></span>
+                    <span class="impact-tag">Metric: <strong>Onboarding &lt; 3 days</strong></span>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Expected Impact -->
     <section id="impact">
         <div class="section-header">
-            <span class="section-tag">Expected Impact</span>
-            <h2>6-Month Transformation Goals</h2>
+            <span class="section-tag">Measurable Outcomes</span>
+            <h2>6-Month Impact Forecast</h2>
+            <p>Clear, measurable outcomes I will deliver in my first 6 months as Tech Lead at KIMEI Global.</p>
         </div>
 
-        <div class="metrics-grid">
+        <div class="code-block">
+            <div class="code-header">
+                <div class="code-dot red"></div>
+                <div class="code-dot yellow"></div>
+                <div class="code-dot green"></div>
+            </div>
+            <pre>// My 6-Month Success Metrics for KIMEI Global
+const impactForecast = {
+  delivery: {
+    featureVelocity: "+30%",
+    deploymentFrequency: "10x per day",
+    leadTime: "&lt; 1 day",
+    changeFailureRate: "&lt; 5%"
+  },
+  reliability: {
+    incidentReduction: "50%",
+    mttr: "&lt; 30 minutes",
+    uptime: "99.9%",
+    errorBudget: "Healthy"
+  },
+  quality: {
+    codeCoverage: "75% minimum",
+    bugEscapeRate: "&lt; 1%",
+    securityIssues: "Zero critical",
+    performanceP95: "&lt; 200ms"
+  },
+  team: {
+    aiAdoption: "80%",
+    mentorshipPairs: "30+",
+    internalPromotion: "20%",
+    retentionRate: "90%",
+    engagementScore: "4.5/5"
+  }
+};</pre>
+        </div>
+
+        <div class="metrics-grid" style="margin-top: 2rem;">
             <div class="metric-card">
                 <div class="metric-value">30%</div>
                 <div class="metric-label">Faster Feature Delivery</div>
+                <div class="metric-sublabel">Through AI tools & DX improvements</div>
             </div>
             <div class="metric-card">
                 <div class="metric-value">50%</div>
-                <div class="metric-label">Reduction in Incidents</div>
-            </div>
-            <div class="metric-card">
-                <div class="metric-value">75%</div>
-                <div class="metric-label">Code Coverage Minimum</div>
+                <div class="metric-label">Fewer Production Incidents</div>
+                <div class="metric-sublabel">Via observability & testing</div>
             </div>
             <div class="metric-card">
                 <div class="metric-value">80%</div>
                 <div class="metric-label">AI Tool Adoption</div>
+                <div class="metric-sublabel">All engineers with Copilot</div>
             </div>
             <div class="metric-card">
                 <div class="metric-value">90%</div>
-                <div class="metric-label">Employee Retention</div>
+                <div class="metric-label">Engineer Retention</div>
+                <div class="metric-sublabel">Through growth & culture</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">75%</div>
+                <div class="metric-label">Code Coverage</div>
+                <div class="metric-sublabel">Minimum across all projects</div>
             </div>
             <div class="metric-card">
                 <div class="metric-value">20%</div>
-                <div class="metric-label">Internal Promotion Rate</div>
+                <div class="metric-label">Internal Promotions</div>
+                <div class="metric-sublabel">Career growth focus</div>
+            </div>
+        </div>
+
+        <div class="highlight-box" style="margin-top: 2rem;">
+            <h4>📊 How I'll Report Progress</h4>
+            <ul>
+                <li><strong>Weekly:</strong> Quick updates in engineering Slack channel</li>
+                <li><strong>Bi-weekly:</strong> Engineering Manager sync with metrics review</li>
+                <li><strong>Monthly:</strong> All-hands presentation with demos and wins</li>
+                <li><strong>Quarterly:</strong> Executive review with DORA metrics and business impact</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Why Me Section -->
+    <section class="fullwidth-section">
+        <div class="fullwidth-content">
+            <div class="section-header">
+                <span class="section-tag">Why I'm the Right Fit</span>
+                <h2>My Unique Value Proposition</h2>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">🚀</div>
+                    <h3>Proven Technical Leadership</h3>
+                    <p>Deep experience in microservices architecture, AI integration, and building high-performing engineering teams. I've led similar transformations before.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌏</div>
+                    <h3>Cross-Cultural Experience</h3>
+                    <p>Understanding of Vietnamese, Japanese, and international business cultures. I can bridge the gap between KIMEI's local teams and global clients.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🤖</div>
+                    <h3>AI-First Mindset</h3>
+                    <p>Early adopter of AI-assisted development. I can guide KIMEI to become a leader in AI-powered engineering, not a follower.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💡</div>
+                    <h3>Pragmatic & Data-Driven</h3>
+                    <p>I balance ideal technical solutions with business realities. Every initiative I propose has clear ROI and measurable outcomes.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎯</div>
+                    <h3>Execution-Focused</h3>
+                    <p>I don't just strategize—I deliver. My 90-day roadmap shows concrete actions, not vague aspirations.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">❤️</div>
+                    <h3>People-First Leader</h3>
+                    <p>I believe great software comes from happy, growing teams. My focus on mentorship and culture creates sustainable success.</p>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- CTA Section -->
     <section style="text-align: center; padding: 4rem 5%;">
-        <h2 style="font-size: 2rem; margin-bottom: 1rem;">Ready to Transform KIMEI Global?</h2>
-        <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 2rem;">This comprehensive strategy positions KIMEI as a destination for top engineering talent while delivering exceptional value to clients through AI-powered engineering excellence.</p>
-        <a href="mailto:tuyendung@kimei.vn" class="btn btn-primary">Let's Build Together</a>
+        <h2 style="font-size: 2rem; margin-bottom: 1rem;">Ready to Build the Future Together?</h2>
+        <p style="color: var(--text-secondary); max-width: 700px; margin: 0 auto 2rem;">
+            I have a clear plan to transform KIMEI Global's engineering capabilities, grow world-class talent, and deliver exceptional value to clients. Let's discuss how I can contribute to your team.
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="mailto:tuyendung@kimei.vn" class="btn btn-primary">Schedule an Interview</a>
+            <a href="https://kimei-global.com" target="_blank" class="btn btn-secondary">Visit KIMEI Global</a>
+        </div>
     </section>
 
     <footer>
         <h3>KIMEI Global Tech Lead Strategy</h3>
-        <p>Research-driven strategy for transforming engineering teams and driving innovation in software outsourcing.</p>
-        <p style="margin-top: 2rem; font-size: 0.875rem; color: var(--text-muted);">
+        <p>Comprehensive 90-day roadmap and contribution plan for transforming KIMEI Global's engineering organization.</p>
+        <p style="margin-top: 1rem; font-size: 0.875rem; color: var(--text-muted);">
             Strategy developed by Technical Leader Candidate • February 2026
         </p>
         <div class="social-links">
@@ -761,6 +1776,22 @@ const strategy = {
             });
         });
 
+        // Tab switching
+        function showPhase(phaseId) {
+            // Hide all phases
+            document.querySelectorAll('.roadmap-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            // Remove active from all tabs
+            document.querySelectorAll('.roadmap-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            // Show selected phase
+            document.getElementById(phaseId).classList.add('active');
+            // Add active to clicked tab
+            event.target.classList.add('active');
+        }
+
         // Fade in animation
         const observerOptions = {
             threshold: 0.1,
@@ -775,7 +1806,7 @@ const strategy = {
             });
         }, observerOptions);
 
-        document.querySelectorAll('.card, .timeline-item, .metric-card').forEach(el => {
+        document.querySelectorAll('.card, .contribution-card, .initiative-card, .metric-card, .phase-item').forEach(el => {
             el.classList.add('fade-in');
             observer.observe(el);
         });
