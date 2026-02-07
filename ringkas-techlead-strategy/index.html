@@ -1,0 +1,1814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ringkas Tech Lead Strategy | Transforming Digital Mortgage in Indonesia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #f59e0b;
+            --primary-dark: #d97706;
+            --accent: #10b981;
+            --accent-glow: rgba(16, 185, 129, 0.3);
+            --secondary: #6366f1;
+            --bg-dark: #0a0a0f;
+            --bg-card: #12121a;
+            --bg-elevated: #1a1a25;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: rgba(148, 163, 184, 0.1);
+            --gradient-1: linear-gradient(135deg, #f59e0b 0%, #f97316 50%, #ef4444 100%);
+            --gradient-2: linear-gradient(90deg, #10b981 0%, #06b6d4 100%);
+            --gradient-fintech: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #f59e0b 100%);
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(245, 158, 11, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
+        }
+
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: 
+                linear-gradient(rgba(245, 158, 11, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(245, 158, 11, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 5% 5rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        .badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-highlights {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .hero-highlight {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .hero-highlight::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            color: white;
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(245, 158, 11, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 4rem 5%;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Company Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(245, 158, 11, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .card ul {
+            margin-top: 1rem;
+            padding-left: 1.2rem;
+        }
+
+        .card li {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 0.4rem;
+        }
+
+        /* Product Cards */
+        .product-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-2);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        .product-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--gradient-2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .product-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .product-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Roadmap Tabs */
+        .roadmap-tabs {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .roadmap-tab {
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .roadmap-tab.active {
+            background: var(--gradient-1);
+            color: white;
+            border-color: transparent;
+        }
+
+        .roadmap-tab:hover:not(.active) {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .roadmap-content {
+            display: none;
+        }
+
+        .roadmap-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .roadmap-phase {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .phase-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .phase-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .phase-badge.days-30 { background: rgba(245, 158, 11, 0.1); color: var(--warning); border: 1px solid rgba(245, 158, 11, 0.3); }
+        .phase-badge.days-60 { background: rgba(99, 102, 241, 0.1); color: var(--secondary); border: 1px solid rgba(99, 102, 241, 0.3); }
+        .phase-badge.days-90 { background: rgba(16, 185, 129, 0.1); color: var(--success); border: 1px solid rgba(16, 185, 129, 0.3); }
+
+        .phase-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .phase-focus {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .phase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .phase-item {
+            background: var(--bg-elevated);
+            border-radius: 12px;
+            padding: 1.25rem;
+        }
+
+        .phase-item h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .phase-item ul {
+            padding-left: 1.2rem;
+        }
+
+        .phase-item li {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .phase-metrics {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+
+        .phase-metric {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .phase-metric .value {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Contribution Areas */
+        .contribution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .contribution-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .contribution-card:hover {
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+
+        .contribution-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .contribution-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .contribution-title {
+            flex: 1;
+        }
+
+        .contribution-title h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .contribution-title span {
+            font-size: 0.8rem;
+            color: var(--accent);
+        }
+
+        .contribution-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .contribution-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .contribution-list li:last-child {
+            border-bottom: none;
+        }
+
+        .contribution-list li::before {
+            content: '→';
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Initiative Cards */
+        .initiative-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+
+        .initiative-card:hover {
+            border-color: rgba(245, 158, 11, 0.3);
+            transform: translateX(5px);
+        }
+
+        .initiative-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .initiative-title {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .initiative-timeline {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--primary);
+            border-radius: 50px;
+        }
+
+        .initiative-desc {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .initiative-impact {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .impact-tag {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .impact-tag strong {
+            color: var(--success);
+        }
+
+        /* Code Block */
+        .code-block {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
+        .code-header {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .code-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .code-dot.red { background: #ef4444; }
+        .code-dot.yellow { background: #f59e0b; }
+        .code-dot.green { background: #10b981; }
+
+        /* Metrics Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        .metric-sublabel {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box h4 {
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .highlight-box p, .highlight-box li {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .highlight-box ul {
+            padding-left: 1.2rem;
+        }
+
+        .highlight-box li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* Integration Flow */
+        .integration-flow {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .integration-step {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .integration-step::after {
+            content: '→';
+            position: absolute;
+            right: -1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .integration-step:last-child::after {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .integration-step::after {
+                content: '↓';
+                right: 50%;
+                top: auto;
+                bottom: -1.5rem;
+                transform: translateX(50%);
+            }
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        .step-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-desc {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* Full Width Sections */
+        .fullwidth-section {
+            max-width: 100%;
+            padding: 5rem 5%;
+            background: var(--bg-card);
+            margin: 0;
+        }
+
+        .fullwidth-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--border);
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        footer h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            width: 44px;
+            height: 44px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .card-grid, .contribution-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .roadmap-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .roadmap-tab {
+                width: 100%;
+                max-width: 200px;
+                text-align: center;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Certificate Badge */
+        .cert-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.8rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--success);
+        }
+
+        /* OJK Badge */
+        .ojk-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.8rem;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="grid-overlay"></div>
+
+    <nav>
+        <div class="logo">RINGKAS × TECH LEAD</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#roadmap">Roadmap</a></li>
+            <li><a href="#contribute">Contribution</a></li>
+            <li><a href="#initiatives">Initiatives</a></li>
+            <li><a href="#impact">Impact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">Senior Fullstack Developer Application</div>
+            <h1>Transforming Digital Mortgage in <span>Indonesia</span></h1>
+            <p>My 90-day roadmap and contribution strategy as a Senior Fullstack Developer / Tech Lead at Ringkas - building scalable fintech solutions for millions of Indonesian homeowners.</p>
+            
+            <div class="hero-highlights">
+                <span class="hero-highlight">30-60-90 Day Plan</span>
+                <span class="hero-highlight">6 Strategic Pillars</span>
+                <span class="hero-highlight">12 Key Initiatives</span>
+                <span class="hero-highlight">OJK & ISO 27001 Ready</span>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="#roadmap" class="btn btn-primary">View My Roadmap</a>
+                <a href="https://ringkas.co.id" target="_blank" class="btn btn-secondary">Visit Ringkas</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <div class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">OJK</div>
+                <div class="stat-label">Registered</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">ISO</div>
+                <div class="stat-label">27001 Certified</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">5+</div>
+                <div class="stat-label">Loan Products</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">DANA</div>
+                <div class="stat-label">Integration</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">OVO</div>
+                <div class="stat-label">Integration</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Ringkas -->
+    <section id="about">
+        <div class="section-header">
+            <span class="section-tag">About Ringkas</span>
+            <h2>Indonesia's Digital Mortgage Aggregator</h2>
+            <p>Ringkas simplifies home ownership by connecting Indonesians to multiple banks through one seamless digital platform.</p>
+        </div>
+
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
+            <span class="ojk-badge">🏛️ OJK Registered</span>
+            <span class="cert-badge">🔒 ISO 27001 Certified</span>
+        </div>
+
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-icon">🏠</div>
+                <h3>KPR Primary & Secondary</h3>
+                <p>Home loans for both new and second-hand properties. Users can compare rates from multiple banks in one platform.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🔄</div>
+                <h3>KPR Take Over</h3>
+                <p>Transfer existing mortgages to better rates, with top-up options for additional financing needs.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">💰</div>
+                <h3>Kredit Multiguna</h3>
+                <p>Multi-purpose cash loans with property collateral for various personal and business needs.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🤝</div>
+                <h3>Multi-Bank Partnerships</h3>
+                <p>Access to multiple LJK (Lembaga Jasa Keuangan) through a single application process.</p>
+            </div>
+        </div>
+
+        <div class="highlight-box" style="margin-top: 2rem;">
+            <h4>🎯 Why Ringkas Matters</h4>
+            <ul>
+                <li>Indonesia has a <strong>270+ million population</strong> with growing middle class</li>
+                <li>Home ownership is a major life goal for Indonesian families</li>
+                <li>Traditional mortgage processes are slow, opaque, and require multiple bank visits</li>
+                <li>Ringkas democratizes access to home financing through technology</li>
+                <li>Government incentives (PPN DTP 100%) are boosting property market in 2025-2026</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 30-60-90 Day Roadmap -->
+    <section id="roadmap">
+        <div class="section-header">
+            <span class="section-tag">My Onboarding Roadmap</span>
+            <h2>30-60-90 Day Integration Plan</h2>
+            <p>A structured approach to understand Ringkas's platform, contribute immediately, and drive long-term technical excellence.</p>
+        </div>
+
+        <div class="roadmap-tabs">
+            <button class="roadmap-tab active" onclick="showPhase('days30')">Days 1-30</button>
+            <button class="roadmap-tab" onclick="showPhase('days60')">Days 31-60</button>
+            <button class="roadmap-tab" onclick="showPhase('days90')">Days 61-90</button>
+        </div>
+
+        <!-- Phase 1: Days 1-30 -->
+        <div id="days30" class="roadmap-content active">
+            <div class="roadmap-phase">
+                <div class="phase-header">
+                    <span class="phase-badge days-30">DAYS 1-30</span>
+                    <h3 class="phase-title">Deep Dive & Quick Wins</h3>
+                </div>
+                <p class="phase-focus"><strong>Focus:</strong> Understanding the existing WordPress-based platform, fintech workflows, and OJK compliance requirements while delivering immediate improvements.</p>
+                
+                <div class="phase-grid">
+                    <div class="phase-item">
+                        <h4>👥 Team Integration</h4>
+                        <ul>
+                            <li>Meet all developers, product managers, and stakeholders</li>
+                            <li>Understand current team structure and development workflows</li>
+                            <li>Learn about existing sprints, ceremonies, and processes</li>
+                            <li>Shadow customer support to understand user pain points</li>
+                            <li>Participate in daily standups and sprint planning</li>
+                            <li>Document team dynamics and communication patterns</li>
+                        </ul>
+                    </div>
+                    <div class="phase-item">
+                        <h4>💻 Technical Assessment</h4>
+                        <ul>
+                            <li>Audit WordPress architecture and custom plugins</li>
+                            <li>Analyze database schema and performance bottlenecks</li>
+                            <li>Review API integrations with banks and wallets (DANA, OVO)</li>
+                            <li>Assess security posture and OJK compliance gaps</li>
+                            <li>Evaluate CI/CD processes and deployment workflows</li>
+                            <li>Document technical debt and scalability concerns</li>
+                        </ul>
+                    </div>
+                    <div class="phase-item">
+                        <h4>🏦 Domain Knowledge</h4>
+                        <ul>
+                            <li>Study Indonesian mortgage (KPR) regulations and workflows</li>
+                            <li>Understand OJK compliance requirements for fintech</li>
+                            <li>Learn about bank partner integration processes</li>
+                            <li>Study loan approval workflows and document requirements</li>
+                            <li>Understand ISO 27001 security requirements</li>
+                            <li>Review data privacy regulations (PDP Law)</li>
+                        </ul>
+                    </div>
+                    <div class="phase-item">
+                        <h4>⚡ Quick Wins</h4>
+                        <ul>
+                            <li>Optimize website performance (reduce load time by 30%)</li>
+                            <li>Fix critical security vulnerabilities</li>
+                            <li>Improve developer onboarding documentation</li>
+                            <li>Set up local development environment standards</li>
+                            <li>Implement automated backup system</li>
+                            <li>Create technical runbook for common issues</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="phase-metrics">
+                    <div class="phase-metric"><span class="value">100%</span> Team introductions</div>
+                    <div class="phase-metric"><span class="value">100%</span> Codebase reviewed</div>
+                    <div class="phase-metric"><span class="value">30%</span> Performance improvement</div>
+                    <div class="phase-metric"><span class="value">1</span> Technical assessment report</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 2: Days 31-60 -->
+        <div id="days60" class="roadmap-content">
+            <div class="roadmap-phase">
+                <div class="phase-header">
+                    <span class="phase-badge days-60">DAYS 31-60</span>
+                    <h3 class="phase-title">Architecture & Foundation</h3>
+                </div>
+                <p class="phase-focus"><strong>Focus:</strong> Building scalable architecture, improving developer experience, and establishing security best practices.</p>
+                
+                <div class="phase-grid">
+                    <div class="phase-item">
+                        <h4>🏗️ Architecture Improvements</h4>
+                        <ul>
+                            <li>Design headless CMS architecture for scalability</li>
+                            <li>Create API gateway for bank integrations</li>
+                            <li>Implement microservices for loan processing</li>
+                            <li>Set up event-driven architecture for async processing</li>
+                            <li>Design caching strategy (Redis) for performance</li>
+                            <li>Create database optimization plan</li>
+                        </ul>
+                    </div>
+                    <div class="phase-item">
+                        <h4>🔐 Security Enhancements</h4>
+                        <ul>
+                            <li>Implement WAF (Web Application Firewall)</li>
+                            <li>Set up automated security scanning</li>
+                            <li>Create data encryption at rest and in transit</li>
+                            <li>Implement RBAC (Role-Based Access Control)</li>
+                            <li>Set up security audit logging</li>
+                            <li>Create incident response playbook</li>
+                        </ul>
+                    </div>
+                    <div class="phase-item">
+                        <h4>⚡ Developer Experience</h4>
+                        <ul>
+                            <li>Set up Docker for consistent local development</li>
+                            <li>Implement automated testing framework</li>
+                            <li>Create CI/CD pipeline with GitHub Actions</li>
+                            <li>Set up staging environment mirroring production</li>
+                            <li>Create code review guidelines and standards</li>
+                            <li>Document API specifications (OpenAPI/Swagger)</li>
+                        </ul>
+                    </div>
+                    <div class="phase-item">
+                        <h4>📊 Monitoring & Analytics</h4>
+                        <ul>
+                            <li>Implement application monitoring (APM)</li>
+                            <li>Set up error tracking and alerting</li>
+                            <li>Create business metrics dashboard</li>
+                            <li>Implement user analytics and funnel tracking</li>
+                            <li>Set up log aggregation and analysis</li>
+                            <li>Create performance benchmarking</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="phase-metrics">
+                    <div class="phase-metric"><span class="value">1</span> Architecture plan</div>
+                    <div class="phase-metric"><span class="value">100%</span> Security audit passed</div>
+                    <div class="phase-metric"><span class="value">1</span> CI/CD pipeline</div>
+                    <div class="phase-metric"><span class="value">50%</span> Test coverage</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 3: Days 61-90 -->
+        <div id="days90" class="roadmap-content">
+            <div class="roadmap-phase">
+                <div class="phase-header">
+                    <span class="phase-badge days-90">DAYS 61-90</span>
+                    <h3 class="phase-title">Scale & Innovate</h3>
+                </div>
+                <p class="phase-focus"><strong>Focus:</strong> Scaling successful initiatives, introducing AI/ML features, and establishing long-term technical direction.</p>
+                
+                <div class="phase-grid">
+                    <div class="phase-item">
+                        <h4>🤖 AI/ML Integration</h4>
+                        <ul>
+                            <li>Implement AI-powered document OCR for KYC</li>
+                            <li>Create credit scoring ML model</li>
+                            <li>Build loan recommendation engine</li>
+                            <li>Implement chatbot for customer support</li>
+                            <li>Create fraud detection system</li>
+                            <li>Deploy GitHub Copilot for development team</li>
+                        </ul>
+                    </div>
+                    <div class="phase-item">
+                        <h4>📈 Scale Operations</h4>
+                        <ul>
+                            <li>Migrate to scalable cloud infrastructure</li>
+                            <li>Implement auto-scaling for traffic spikes</li>
+                            <li>Set up CDN for global performance</li>
+                            <li>Create disaster recovery plan</li>
+                            <li>Implement database replication</li>
+                            <li>Load testing and capacity planning</li>
+                        </ul>
+                    </div>
+                    <div class="phase-item">
+                        <h4>👥 Team Development</h4>
+                        <ul>
+                            <li>Establish mentorship program for junior devs</li>
+                            <li>Create technical training curriculum</li>
+                            <li>Set up code review culture and standards</li>
+                            <li>Implement pair programming sessions</li>
+                            <li>Create career progression framework</li>
+                            <li>Organize internal tech talks</li>
+                        </ul>
+                    </div>
+                    <div class="phase-item">
+                        <h4>🎯 Strategic Planning</h4>
+                        <ul>
+                            <li>Present 90-day impact report to leadership</li>
+                            <li>Define 6-month technical roadmap</li>
+                            <li>Create mobile app strategy</li>
+                            <li>Plan open API platform for partners</li>
+                            <li>Design data analytics platform</li>
+                            <li>Set Q2 goals and OKRs</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="phase-metrics">
+                    <div class="phase-metric"><span class="value">5+</span> AI features deployed</div>
+                    <div class="phase-metric"><span class="value">100%</span> Cloud migration</div>
+                    <div class="phase-metric"><span class="value">3+</span> Junior devs mentored</div>
+                    <div class="phase-metric"><span class="value">1</span> 6-month roadmap</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Contribution Areas -->
+    <section id="contribute" class="fullwidth-section">
+        <div class="fullwidth-content">
+            <div class="section-header">
+                <span class="section-tag">How I'll Contribute</span>
+                <h2>Six Strategic Contribution Areas</h2>
+                <p>Specific ways I will add value to Ringkas across technical, security, and organizational dimensions.</p>
+            </div>
+
+            <div class="contribution-grid">
+                <!-- Scalable Architecture -->
+                <div class="contribution-card">
+                    <div class="contribution-header">
+                        <div class="contribution-icon">🏗️</div>
+                        <div class="contribution-title">
+                            <h3>Scalable Architecture</h3>
+                            <span>From WordPress to Microservices</span>
+                        </div>
+                    </div>
+                    <ul class="contribution-list">
+                        <li>Design headless CMS architecture for better scalability</li>
+                        <li>Create API gateway for unified bank integrations</li>
+                        <li>Implement event-driven microservices for loan processing</li>
+                        <li>Design caching layer (Redis) for performance optimization</li>
+                        <li>Create database sharding strategy for growth</li>
+                        <li>Implement auto-scaling infrastructure</li>
+                        <li>Plan gradual migration without service disruption</li>
+                    </ul>
+                </div>
+
+                <!-- Fintech Security -->
+                <div class="contribution-card">
+                    <div class="contribution-header">
+                        <div class="contribution-icon">🔐</div>
+                        <div class="contribution-title">
+                            <h3>Fintech Security</h3>
+                            <span>OJK & ISO 27001 Compliance</span>
+                        </div>
+                    </div>
+                    <ul class="contribution-list">
+                        <li>Implement WAF and DDoS protection</li>
+                        <li>Set up automated vulnerability scanning</li>
+                        <li>Create data encryption at rest and in transit</li>
+                        <li>Implement RBAC with principle of least privilege</li>
+                        <li>Set up SIEM for security event monitoring</li>
+                        <li>Create incident response and forensics procedures</li>
+                        <li>Ensure PDP Law (data privacy) compliance</li>
+                    </ul>
+                </div>
+
+                <!-- AI-Powered Features -->
+                <div class="contribution-card">
+                    <div class="contribution-header">
+                        <div class="contribution-icon">🤖</div>
+                        <div class="contribution-title">
+                            <h3>AI-Powered Features</h3>
+                            <span>Smart Loan Processing</span>
+                        </div>
+                    </div>
+                    <ul class="contribution-list">
+                        <li>Implement OCR for automatic document processing (KTP, NPWP, etc.)</li>
+                        <li>Build ML-based credit scoring model</li>
+                        <li>Create personalized loan recommendation engine</li>
+                        <li>Deploy AI chatbot for 24/7 customer support</li>
+                        <li>Implement fraud detection and prevention system</li>
+                        <li>Create automated document verification pipeline</li>
+                        <li>Deploy GitHub Copilot for development productivity</li>
+                    </ul>
+                </div>
+
+                <!-- Developer Experience -->
+                <div class="contribution-card">
+                    <div class="contribution-header">
+                        <div class="contribution-icon">⚡</div>
+                        <div class="contribution-title">
+                            <h3>Developer Experience</h3>
+                            <span>2x Productivity Goal</span>
+                        </div>
+                    </div>
+                    <ul class="contribution-list">
+                        <li>Set up Docker for consistent development environments</li>
+                        <li>Implement automated testing (unit, integration, e2e)</li>
+                        <li>Create CI/CD pipeline with GitHub Actions</li>
+                        <li>Set up staging environment that mirrors production</li>
+                        <li>Create comprehensive API documentation (Swagger/OpenAPI)</li>
+                        <li>Implement code quality tools (linting, static analysis)</li>
+                        >li>Build internal developer portal with service catalog</li>
+                    </ul>
+                </div>
+
+                <!-- Bank Integrations -->
+                <div class="contribution-card">
+                    <div class="contribution-header">
+                        <div class="contribution-icon">🏦</div>
+                        <div class="contribution-title">
+                            <h3>Bank Integration Platform</h3>
+                            <span>Seamless LJK Connectivity</span>
+                        </div>
+                    </div>
+                    <ul class="contribution-list">
+                        <li>Design standardized API adapter for bank integrations</li>
+                        <li>Create unified data model for all bank partners</li>
+                        <li>Implement retry logic and circuit breakers for reliability</li>
+                        <li>Build real-time status synchronization system</li>
+                        <li>Create webhook system for bank notifications</li>
+                        <li>Implement idempotency for financial transactions</li>
+                        <li>Design sandbox environment for testing integrations</li>
+                    </ul>
+                </div>
+
+                <!-- Team Growth -->
+                <div class="contribution-card">
+                    <div class="contribution-header">
+                        <div class="contribution-icon">🌱</div>
+                        <div class="contribution-title">
+                            <h3>Team Development</span>
+                            <span>Building World-Class Engineers</span>
+                        </div>
+                    </div>
+                    <ul class="contribution-list">
+                        <li>Establish mentorship program (Senior → Junior pairing)</li>
+                        <li>Create technical onboarding curriculum</li>
+                        <li>Set up code review culture and best practices</li>
+                        <li>Organize weekly tech talks and knowledge sharing</li>
+                        <li>Implement pair programming for complex features</li>
+                        <li>Create career progression framework</li>
+                        <li>Foster inclusive and collaborative engineering culture</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Initiatives -->
+    <section id="initiatives">
+        <div class="section-header">
+            <span class="section-tag">What I'll Deliver</span>
+            <h2>12 Key Initiatives</h2>
+            <p>Concrete projects I will lead in my first 6 months, with clear timelines and measurable outcomes.</p>
+        </div>
+
+        <div class="initiative-card">
+            <div class="initiative-header">
+                <span class="initiative-title">🤖 1. AI-Powered Document Processing</span>
+                <span class="initiative-timeline">Month 2-4</span>
+            </div>
+            <p class="initiative-desc">Implement OCR and ML for automatic extraction of KYC documents (KTP, NPWP, payslips). Reduce manual data entry by 80% and improve application processing speed.</p>
+            <div class="initiative-impact">
+                <span class="impact-tag">Target: <strong>80% automation</strong></span>
+                <span class="impact-tag">Impact: <strong>5x faster processing</strong></span>
+                <span class="impact-tag">Metric: <strong>&lt; 2 min/document</strong></span>
+            </div>
+        </div>
+
+        <div class="initiative-card">
+            <div class="initiative-header">
+                <span class="initiative-title">🏗️ 2. Headless CMS Migration</span>
+                <span class="initiative-timeline">Month 3-6</span>
+            </div>
+            <p class="initiative-desc">Migrate from monolithic WordPress to headless CMS with React frontend. Enable better performance, scalability, and modern development workflows while maintaining content management.</p>
+            <div class="initiative-impact">
+                <span class="impact-tag">Target: <strong>100% migration</strong></span>
+                <span class="impact-tag">Impact: <strong>50% faster load</strong></span>
+                <span class="impact-tag">Metric: <strong>&lt; 1s TTFB</strong></span>
+            </div>
+        </div>
+
+        <div class="initiative-card">
+            <div class="initiative-header">
+                <span class="initiative-title">🔐 3. Security Hardening Initiative</span>
+                <span class="initiative-timeline">Month 1-3</span>
+            </div>
+            <p class="initiative-desc">Implement WAF, automated vulnerability scanning, enhanced encryption, and RBAC. Achieve full OJK compliance and strengthen ISO 27001 posture.</p>
+            <div class="initiative-impact">
+                <span class="impact-tag">Target: <strong>Zero critical issues</strong></span>
+                <span class="impact-tag">Impact: <strong>Audit ready</strong></span>
+                <span class="impact-tag">Metric: <strong>A+ security rating</strong></span>
+            </div>
+        </div>
+
+        <div class="initiative-card">
+            <div class="initiative-header">
+                <span class="initiative-title">🏦 4. Bank Integration Platform</span>
+                <span class="initiative-timeline">Month 2-5</span>
+            </div>
+            <p class="initiative-desc">Build standardized API gateway for bank integrations with unified data model, retry logic, circuit breakers, and real-time synchronization. Enable faster onboarding of new bank partners.</p>
+            <div class="initiative-impact">
+                <span class="impact-tag">Target: <strong>5+ banks connected</strong></span>
+                <span class="impact-tag">Impact: <strong>99.9% uptime</strong></span>
+                <span class="impact-tag">Metric: <strong>&lt; 1s response</strong></span>
+            </div>
+        </div>
+
+        <div class="initiative-card">
+            <div class="initiative-header">
+                <span class="initiative-title">⚡ 5. Developer Experience Platform</span>
+                <span class="initiative-timeline">Month 1-4</span>
+            </div>
+            <p class="initiative-desc">Set up Docker, CI/CD pipeline, automated testing, staging environment, and developer documentation. Reduce onboarding time from days to hours.</p>
+            <div class="initiative-impact">
+                <span class="impact-tag">Target: <strong>100% automation</strong></span>
+                <span class="impact-tag">Impact: <strong>2x productivity</strong></span>
+                <span class="impact-tag">Metric: <strong>&lt; 1 day onboarding</strong></span>
+            </div>
+        </div>
+
+        <div class="initiative-card">
+            <div class="initiative-header">
+                <span class="initiative-title">📊 6. Real-time Analytics Dashboard</span>
+                <span class="initiative-timeline">Month 3-5</span>
+            </div>
+            <p class="initiative-desc">Build comprehensive analytics platform tracking application funnels, conversion rates, bank partner performance, and business metrics. Enable data-driven decision making.</p>
+            <div class="initiative-impact">
+                <span class="impact-tag">Target: <strong>Real-time data</strong></span>
+                <span class="impact-tag">Impact: <strong>Data-driven decisions</strong></span>
+                <span class="impact-tag">Metric: <strong>50+ metrics tracked</strong></span>
+            </div>
+        </div>
+
+        <div class="initiative-card">
+            <div class="initiative-header">
+                <span class="initiative-title">🤖 7. ML Credit Scoring Model</span>
+                <span class="initiative-timeline">Month 4-6</span>
+            </div>
+            <p class="initiative-desc">Develop machine learning model for credit risk assessment using alternative data sources. Improve loan approval accuracy and reduce default rates.</p>
+            <div class="initiative-impact">
+                <span class="impact-tag">Target: <strong>95% accuracy</strong></span>
+                <span class="impact-tag">Impact: <strong>30% better risk assessment</strong></span>
+                <span class="impact-tag">Metric: <strong>&lt; 5% default rate</strong></span>
+            </div>
+        </div>
+
+        <div class="initiative-card">
+            <div class="initiative-header">
+                <span class="initiative-title">💬 8. AI Customer Support Bot</span>
+                <span class="initiative-timeline">Month 3-5</span>
+            </div>
+            <p class="initiative-desc">Deploy intelligent chatbot for 24/7 customer support handling FAQs, application status checks, and basic troubleshooting. Integrate with Qiscus platform.</p>
+            <div class="initiative-impact">
+                <span class="impact-tag">Target: <strong>70% automation</strong></span>
+                <span class="impact-tag">Impact: <strong>24/7 availability</strong></span>
+                <span class="impact-tag">Metric: <strong>&lt; 2s response time</strong></span>
+            </div>
+        </div>
+
+        <div class="initiative-card">
+            <div class="initiative-header">
+                <span class="initiative-title">📱 9. Mobile App Strategy</span>
+                <span class="initiative-timeline">Month 4-6</span>
+            </div>
+            <p class="initiative-desc">Design and develop native mobile apps (iOS/Android) for better user experience. Enable push notifications, document scanning, and offline capabilities.</p>
+            <div class="initiative-impact">
+                <span class="impact-tag">Target: <strong>MVP launch</strong></span>
+                <span class="impact-tag">Impact: <strong>+50% mobile users</strong></span>
+                <span class="impact-tag">Metric: <strong>4.5+ app rating</strong></span>
+            </div>
+        </div>
+
+        <div class="initiative-card">
+            <div class="initiative-header">
+                <span class="initiative-title">🔍 10. Fraud Detection System</span>
+                <span class="initiative-timeline">Month 3-6</span>
+            </div>
+            <p class="initiative-desc">Implement AI-based fraud detection for loan applications. Detect suspicious patterns, fake documents, and identity theft attempts in real-time.</p>
+            <div class="initiative-impact">
+                <span class="impact-tag">Target: <strong>Real-time detection</strong></span>
+                <span class="impact-tag">Impact: <strong>90% fraud prevention</strong></span>
+                <span class="impact-tag">Metric: <strong>&lt; 0.1% false positive</strong></span>
+            </div>
+        </div>
+
+        <div class="initiative-card">
+            <div class="initiative-header">
+                <span class="initiative-title">🎓 11. Engineering Mentorship Program</span>
+                <span class="initiative-timeline">Month 1-ongoing</span>
+            </div>
+            <p class="initiative-desc">Establish structured mentorship pairing seniors with juniors. Create training curriculum, conduct weekly tech talks, and foster knowledge sharing culture.</p>
+            <div class="initiative-impact">
+                <span class="impact-tag">Target: <strong>100% participation</strong></span>
+                <span class="impact-tag">Impact: <strong>Faster skill growth</strong></span>
+                <span class="impact-tag">Metric: <strong>2x promotion rate</strong></span>
+            </div>
+        </div>
+
+        <div class="initiative-card">
+            <div class="initiative-header">
+                <span class="initiative-title">☁️ 12. Cloud Infrastructure Modernization</span>
+                <span class="initiative-timeline">Month 2-5</span>
+            </div>
+            <p class="initiative-desc">Migrate to scalable cloud infrastructure (AWS/GCP) with auto-scaling, CDN, and multi-region disaster recovery. Implement Infrastructure as Code with Terraform.</p>
+            <div class="initiative-impact">
+                <span class="impact-tag">Target: <strong>99.99% uptime</strong></span>
+                <span class="impact-tag">Impact: <strong>Global scalability</strong></span>
+                <span class="impact-tag">Metric: <strong>50% cost reduction</strong></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expected Impact -->
+    <section id="impact" class="fullwidth-section">
+        <div class="fullwidth-content">
+            <div class="section-header">
+                <span class="section-tag">Measurable Outcomes</span>
+                <h2>6-Month Impact Forecast</h2>
+                <p>Clear, measurable outcomes I will deliver in my first 6 months as Senior Fullstack Developer / Tech Lead at Ringkas.</p>
+            </div>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <div class="code-dot red"></div>
+                    <div class="code-dot yellow"></div>
+                    <div class="code-dot green"></div>
+                </div>
+                <pre>// My 6-Month Success Metrics for Ringkas
+const impactForecast = {
+  performance: {
+    pageLoadTime: "&lt; 1 second",
+    apiResponseTime: "&lt; 200ms",
+    uptime: "99.99%",
+    mobileScore: "90+"
+  },
+  security: {
+    vulnerabilities: "Zero critical",
+    compliance: "OJK + ISO 27001 ready",
+    auditResult: "Pass with no findings",
+    dataEncryption: "100%"
+  },
+  aiFeatures: {
+    documentAutomation: "80%",
+    chatbotCoverage: "70%",
+    fraudDetection: "90% accuracy",
+    creditScoring: "95% accuracy"
+  },
+  team: {
+    testCoverage: "80%",
+    deploymentFrequency: "Daily",
+    onboardingTime: "&lt; 1 day",
+    developerSatisfaction: "4.5/5"
+  },
+  business: {
+    applicationProcessingTime: "-50%",
+    bankIntegrationTime: "-70%",
+    customerSupportLoad: "-60%",
+    newBankPartners: "+3"
+  }
+};</pre>
+            </div>
+
+            <div class="metrics-grid" style="margin-top: 2rem;">
+                <div class="metric-card">
+                    <div class="metric-value">50%</div>
+                    <div class="metric-label">Faster Load Time</div>
+                    <div class="metric-sublabel">Performance optimization</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">80%</div>
+                    <div class="metric-label">Document Automation</div>
+                    <div class="metric-sublabel">AI-powered processing</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">99.99%</div>
+                    <div class="metric-label">Platform Uptime</div>
+                    <div class="metric-sublabel">Cloud infrastructure</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">Zero</div>
+                    <div class="metric-label">Critical Vulnerabilities</div>
+                    <div class="metric-sublabel">Security hardening</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">2x</div>
+                    <div class="metric-label">Developer Productivity</div>
+                    <div class="metric-sublabel">DX improvements</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">Daily</div>
+                    <div class="metric-label">Deployments</div>
+                    <div class="metric-sublabel">CI/CD automation</div>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 2rem;">
+                <h4>📊 How I'll Report Progress</h4>
+                <ul>
+                    <li><strong>Weekly:</strong> Sprint updates and blocker resolution</li>
+                    <li><strong>Bi-weekly:</strong> Demo new features and improvements
+                    <li><strong>Monthly:</strong> Metrics review and roadmap updates</li>
+                    <li><strong>Quarterly:</strong> Strategic planning and goal setting</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Me Section -->
+    <section>
+        <div class="section-header">
+            <span class="section-tag">Why I'm the Right Fit</span>
+            <h2>My Unique Value Proposition</h2>
+        </div>
+
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-icon">🏦</div>
+                <h3>Fintech Expertise</h3>
+                <p>Deep understanding of financial regulations, security requirements, and banking integrations. Experience with OJK-compliant systems and ISO 27001.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🤖</div>
+                <h3>AI/ML Integration</h3>
+                <p>Proven experience implementing AI-powered features including OCR, credit scoring, fraud detection, and intelligent chatbots.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🏗️</div>
+                <h3>Scalable Architecture</h3>
+                <p>Track record of migrating legacy systems to modern microservices architecture with zero downtime and improved performance.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🔐</div>
+                <h3>Security First</h3>
+                <p>Strong focus on security best practices, compliance requirements, and building systems that protect sensitive financial data.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🌏</div>
+                <h3>Indonesia Market</h3>
+                <p>Understanding of Indonesian fintech landscape, local regulations, and cultural nuances. Can bridge technical and business needs effectively.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🚀</div>
+                <h3>Execution Focus</h3>
+                <p>Proven ability to deliver results quickly with my 90-day roadmap showing concrete actions and measurable outcomes from day one.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section style="text-align: center; padding: 4rem 5%;">
+        <h2 style="font-size: 2rem; margin-bottom: 1rem;">Ready to Transform Digital Mortgage?</h2>
+        <p style="color: var(--text-secondary); max-width: 700px; margin: 0 auto 2rem;">
+            I have a clear plan to help Ringkas scale its platform, implement AI-powered features, and build a world-class engineering team. Let's discuss how I can contribute to your mission of making home ownership accessible to all Indonesians.
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="mailto:support@ringkas.co.id" class="btn btn-primary">Schedule an Interview</a>
+            <a href="https://ringkas.co.id/career/" target="_blank" class="btn btn-secondary">View Careers</a>
+        </div>
+    </section>
+
+    <footer>
+        <h3>Ringkas Senior Fullstack Developer Strategy</h3>
+        <p>Comprehensive 90-day roadmap and contribution plan for transforming Ringkas into Indonesia's leading digital mortgage platform.</p>
+        <p style="margin-top: 1rem; font-size: 0.875rem; color: var(--text-muted);">
+            Strategy developed by Senior Fullstack Developer Candidate • February 2026
+        </p>
+        <div class="social-links">
+            <a href="https://ringkas.co.id" target="_blank" title="Website">🌐</a>
+            <a href="mailto:support@ringkas.co.id" title="Email">✉️</a>
+            <a href="https://wa.me/628111150288" title="WhatsApp">💬</a>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Tab switching
+        function showPhase(phaseId) {
+            // Hide all phases
+            document.querySelectorAll('.roadmap-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            // Remove active from all tabs
+            document.querySelectorAll('.roadmap-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            // Show selected phase
+            document.getElementById(phaseId).classList.add('active');
+            // Add active to clicked tab
+            event.target.classList.add('active');
+        }
+
+        // Fade in animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card, .contribution-card, .initiative-card, .metric-card, .phase-item').forEach(el => {
+            el.classList.add('fade-in');
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
